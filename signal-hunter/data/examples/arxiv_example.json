@@ -1,0 +1,71 @@
+{
+  "unique_id": "arxiv_2310_12345",
+  "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+  "source_name": "arXiv",
+  "source_type": "preprint",
+  "url": "https://arxiv.org/abs/2305.14314",
+  "publication_date": "2023-05-23T00:00:00Z",
+  "discovered_date": "2026-07-06T04:00:00Z",
+  "authors": [
+    {
+      "name": "Tim Dettmers",
+      "email": "dettmers@cs.washington.edu",
+      "affiliation": "University of Washington",
+      "github_username": "TimDettmers",
+      "website": "https://timdettmers.com"
+    },
+    {
+      "name": "Artidoro Pagnoni",
+      "affiliation": "University of Washington"
+    }
+  ],
+  "organization": "University of Washington",
+  "summary": "QLoRA reduces the memory usage of finetuning a 65B parameter model down to a single 48GB GPU while preserving full 16-bit finetuning task performance. It introduces Double Quantization and Paged Optimizers to manage memory spikes.",
+  "tags": ["LLM", "Quantization", "Finetuning", "LoRA", "Efficiency"],
+  "categories": ["Large Language Models", "Model Compression"],
+  "technologies": ["PyTorch", "Hugging Face PEFT", "BitsAndBytes"],
+  "programming_languages": ["Python", "CUDA"],
+  "paper_type": "Preprint",
+  "github_repository": "https://github.com/artidoro/qlora",
+  "documentation_links": ["https://huggingface.co/docs/peft/conceptual_guides/qlora"],
+  "related_links": ["https://timdettmers.com/2023/05/23/qlora-efficient-finetuning-of-quantized-llms/"],
+  "seller_pitch": "Finetune massive production-grade LLMs on consumer-grade hardware. Break the GPU memory wall without sacrificing quality.",
+  "why_it_matters": "Democratizes access to custom AI finetuning, lowering infrastructure costs by up to 3x and enabling local deployment.",
+  "build_opportunities": [
+    "Build a custom local LLM training appliance using consumer GPUs",
+    "Integrate quantized adapter training directly into edge-device frameworks"
+  ],
+  "risks": [
+    "Quantization noise in highly sensitive domains",
+    "Slower training throughput compared to native FP16 multi-GPU training"
+  ],
+  "opportunity_score": 0.94,
+  "engineering_score": 0.91,
+  "scientific_score": 0.96,
+  "startup_score": 0.89,
+  "confidence_score": 0.98,
+  "novelty_score": 0.95,
+  "verification_status": {
+    "state": "verified",
+    "verified_by": "SignalVerifier-v1",
+    "verified_at": "2026-07-06T04:10:00Z",
+    "score": 0.96,
+    "notes": "Excellent contribution to memory-efficient model optimization. Fully verified mathematical backing and code artifacts.",
+    "is_breakthrough": true
+  },
+  "trend_metadata": {
+    "velocity": 120.5,
+    "sentiment_score": 0.85,
+    "interest_level": "breakout",
+    "growth_percentage": 250.0,
+    "mentions_count": 1420,
+    "sources_count": 45
+  },
+  "duplicate_of": null,
+  "version": "1.0.0",
+  "raw_metadata": {
+    "arxiv_id": "2305.14314",
+    "primary_category": "cs.LG",
+    "comment": "Accepted to NeurIPS 2023"
+  }
+}

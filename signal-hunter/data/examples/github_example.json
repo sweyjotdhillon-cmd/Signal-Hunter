@@ -1,0 +1,65 @@
+{
+  "unique_id": "github_vllm_project",
+  "title": "vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention",
+  "source_name": "GitHub",
+  "source_type": "code_repository",
+  "url": "https://github.com/vllm-project/vllm",
+  "publication_date": "2023-06-20T00:00:00Z",
+  "discovered_date": "2026-07-06T04:00:00Z",
+  "authors": [
+    {
+      "name": "Woosuk Kwon",
+      "email": "woosuk@berkeley.edu",
+      "affiliation": "UC Berkeley"
+    }
+  ],
+  "organization": "vLLM Team / UC Berkeley",
+  "summary": "A high-throughput and memory-efficient LLM serving engine. It uses PagedAttention, which partitions the KV cache of LLMs into non-contiguous blocks, mimicking OS virtual memory paging, to achieve zero cache waste.",
+  "tags": ["Inference", "LLM Serving", "PagedAttention", "KV Cache", "High Throughput"],
+  "categories": ["Inference Engines", "AI Systems"],
+  "technologies": ["PyTorch", "vLLM", "CUDA", "Ray"],
+  "programming_languages": ["Python", "C++", "CUDA"],
+  "paper_type": "Software Repository",
+  "github_repository": "https://github.com/vllm-project/vllm",
+  "documentation_links": ["https://docs.vllm.ai/"],
+  "related_links": ["https://arxiv.org/abs/2309.06180"],
+  "seller_pitch": "Deliver 2x-4x higher throughput than Hugging Face Transformers with zero code changes.",
+  "why_it_matters": "Saves millions of dollars in LLM hosting costs by maximizing GPU utilization and eliminating memory fragmentation.",
+  "build_opportunities": [
+    "Create dynamic API endpoints that scale worker replicas based on token generation density",
+    "Develop client-side prompt routing frameworks optimization"
+  ],
+  "risks": [
+    "High engineering complexity to adapt to new non-standard model architectures",
+    "Cold start latency during dynamic multi-node model loading"
+  ],
+  "opportunity_score": 0.96,
+  "engineering_score": 0.98,
+  "scientific_score": 0.92,
+  "startup_score": 0.95,
+  "confidence_score": 0.99,
+  "novelty_score": 0.94,
+  "verification_status": {
+    "state": "verified",
+    "verified_by": "SignalVerifier-v1",
+    "verified_at": "2026-07-06T04:11:00Z",
+    "score": 0.98,
+    "notes": "Outstanding implementation of systems-level optimization. PagedAttention is a revolutionary concept for LLM inference scalability.",
+    "is_breakthrough": true
+  },
+  "trend_metadata": {
+    "velocity": 345.2,
+    "sentiment_score": 0.92,
+    "interest_level": "breakout",
+    "growth_percentage": 420.0,
+    "mentions_count": 8900,
+    "sources_count": 128
+  },
+  "duplicate_of": null,
+  "version": "1.0.0",
+  "raw_metadata": {
+    "stars_count": 25000,
+    "forks_count": 3400,
+    "open_issues_count": 450
+  }
+}

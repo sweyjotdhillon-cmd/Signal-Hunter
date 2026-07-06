@@ -36,6 +36,7 @@ export default function App() {
   const [copiedFile, setCopiedFile] = useState(false);
   const [copiedReport, setCopiedReport] = useState(false);
   const [downloadingZip, setDownloadingZip] = useState(false);
+  const [activeSection, setActiveSection] = useState<"code" | "execution">("code");
 
   // Folder collapse states
   const [expandedFolders, setExpandedFolders] = useState<Record<string, boolean>>({
@@ -320,476 +321,530 @@ export default function App() {
         </div>
       </header>
 
-      {/* CORE WORKSPACE */}
-      <main id="app_workspace" className="flex-1 grid grid-cols-1 xl:grid-cols-12 overflow-hidden">
+      {/* SECTION TABS SUB-HEADER */}
+      <div id="section_tabs_bar" className="border-b border-slate-900 bg-slate-950 px-6 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="flex space-x-1.5 bg-slate-900/80 p-1 rounded-xl border border-slate-800/80 w-full sm:w-auto">
+          <button
+            id="tab_code_workspace"
+            onClick={() => setActiveSection("code")}
+            className={`flex-1 sm:flex-initial flex items-center justify-center space-x-2 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+              activeSection === "code"
+                ? "bg-gradient-to-r from-teal-950/60 to-teal-900/40 text-teal-300 border border-teal-500/30 shadow-md shadow-teal-950/40"
+                : "text-slate-400 hover:text-slate-200 border border-transparent"
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5 text-teal-400" />
+            <span>💻 CODE WORKSPACE</span>
+          </button>
+          <button
+            id="tab_execution_sandbox"
+            onClick={() => setActiveSection("execution")}
+            className={`flex-1 sm:flex-initial flex items-center justify-center space-x-2 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+              activeSection === "execution"
+                ? "bg-gradient-to-r from-teal-950/60 to-teal-900/40 text-teal-300 border border-teal-500/30 shadow-md shadow-teal-950/40"
+                : "text-slate-400 hover:text-slate-200 border border-transparent"
+            }`}
+          >
+            <Play className={`w-3.5 h-3.5 ${activeSection === "execution" ? "text-teal-400 fill-teal-400/20" : "text-slate-400"}`} />
+            <span>⚡ EXECUTION SANDBOX</span>
+          </button>
+        </div>
         
-        {/* PANEL 1: FILE EXPLORER (3 cols) */}
-        <section id="file_explorer_panel" className="xl:col-span-3 border-r border-slate-900 flex flex-col bg-slate-950/40">
-          
-          {/* Search bar */}
-          <div className="p-4 border-b border-slate-900">
-            <div className="relative">
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
-              <input
-                id="search_files_input"
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search module code..."
-                className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500 transition placeholder:text-slate-500"
-              />
-            </div>
-          </div>
+        <div className="flex items-center space-x-2 text-[11px] text-slate-500 font-mono">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>Workspace Path:</span>
+          <span className="text-slate-300 font-semibold bg-slate-900 px-2 py-0.5 rounded">/signal-hunter</span>
+        </div>
+      </div>
 
-          {/* Directory Tree */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-1 select-none">
-            {searchQuery ? (
-              // Search Results view
-              <div className="space-y-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block mb-2">Search Results</span>
-                {filteredFiles.length === 0 ? (
-                  <p className="text-xs text-slate-500 italic p-2">No matching file content found.</p>
+      {/* CORE WORKSPACE */}
+      <main id="app_workspace" className="flex-1 flex flex-col overflow-hidden">
+        
+        {activeSection === "code" ? (
+          <div className="flex-1 grid grid-cols-1 xl:grid-cols-12 overflow-hidden">
+            {/* PANEL 1: FILE EXPLORER (3 cols) */}
+            <section id="file_explorer_panel" className="xl:col-span-3 border-r border-slate-900 flex flex-col bg-slate-950/40 overflow-hidden">
+              
+              {/* Search bar */}
+              <div className="p-4 border-b border-slate-900">
+                <div className="relative">
+                  <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
+                  <input
+                    id="search_files_input"
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search module code..."
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500 transition placeholder:text-slate-500"
+                  />
+                </div>
+              </div>
+
+              {/* Directory Tree */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-1 select-none">
+                {searchQuery ? (
+                  // Search Results view
+                  <div className="space-y-2">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block mb-2">Search Results</span>
+                    {filteredFiles.length === 0 ? (
+                      <p className="text-xs text-slate-500 italic p-2">No matching file content found.</p>
+                    ) : (
+                      filteredFiles.map((file) => (
+                        <button
+                          key={file.path}
+                          onClick={() => {
+                            setSelectedFile(file);
+                            setSearchQuery("");
+                          }}
+                          className="w-full flex items-center space-x-2 px-2 py-1.5 hover:bg-slate-900 rounded text-left text-xs text-teal-400 hover:text-teal-300"
+                        >
+                          <File className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="truncate">{file.path}</span>
+                        </button>
+                      ))
+                    )}
+                  </div>
                 ) : (
-                  filteredFiles.map((file) => (
-                    <button
-                      key={file.path}
-                      onClick={() => {
-                        setSelectedFile(file);
-                        setSearchQuery("");
-                      }}
-                      className="w-full flex items-center space-x-2 px-2 py-1.5 hover:bg-slate-900 rounded text-left text-xs text-teal-400 hover:text-teal-300"
-                    >
-                      <File className="w-3.5 h-3.5 flex-shrink-0" />
-                      <span className="truncate">{file.path}</span>
-                    </button>
-                  ))
+                  // Standard Directory Structure
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500">Project Skeleton Directory</span>
+                      <span className="text-[10px] bg-slate-900 px-2 py-0.5 rounded text-slate-400 font-mono">/signal-hunter</span>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      {/* Folders List */}
+                      {Object.keys(expandedFolders).map((folder) => {
+                        const isExpanded = expandedFolders[folder];
+                        const files = getFilesByFolder(folder);
+                        return (
+                          <div key={folder} className="space-y-0.5">
+                            <button
+                              onClick={() => toggleFolder(folder)}
+                              className="w-full flex items-center justify-between px-2 py-1 hover:bg-slate-900/60 rounded text-left text-xs font-medium text-slate-300 hover:text-white transition group"
+                            >
+                              <div className="flex items-center space-x-2 truncate">
+                                {isExpanded ? (
+                                  <ChevronDown className="w-3 h-3 text-slate-500" />
+                                ) : (
+                                  <ChevronRight className="w-3 h-3 text-slate-500" />
+                                )}
+                                {isExpanded ? (
+                                  <FolderOpen className="w-4 h-4 text-teal-500" />
+                                ) : (
+                                  <Folder className="w-4 h-4 text-teal-600 group-hover:text-teal-500" />
+                                )}
+                                <span className="truncate">{folder}/</span>
+                              </div>
+                              <span className="text-[9px] font-mono text-slate-600 px-1">{files.length} items</span>
+                            </button>
+
+                            {isExpanded && (
+                              <div className="pl-6 border-l border-slate-900 space-y-0.5 ml-3.5 py-0.5">
+                                {files.map((file) => (
+                                  <button
+                                    key={file.path}
+                                    onClick={() => setSelectedFile(file)}
+                                    className={`w-full flex items-center space-x-2 px-2 py-1 rounded text-left text-xs transition ${
+                                      selectedFile.path === file.path
+                                        ? "bg-teal-950/40 text-teal-300 font-medium"
+                                        : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/40"
+                                    }`}
+                                  >
+                                    <File className={`w-3.5 h-3.5 ${selectedFile.path === file.path ? "text-teal-400" : "text-slate-500"}`} />
+                                    <span className="truncate">{file.name}</span>
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+
+                      {/* Root files */}
+                      <div className="pt-2 border-t border-slate-900/60 space-y-1">
+                        <span className="text-[9px] uppercase font-semibold text-slate-600 px-2">Root Modules</span>
+                        {getRootFiles().map((file) => (
+                          <button
+                            key={file.path}
+                            onClick={() => setSelectedFile(file)}
+                            className={`w-full flex items-center space-x-2 px-2 py-1 rounded text-left text-xs transition ${
+                              selectedFile.path === file.path
+                                ? "bg-teal-950/40 text-teal-300 font-medium"
+                                        : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/40"
+                            }`}
+                          >
+                            <File className={`w-3.5 h-3.5 ${selectedFile.path === file.path ? "text-teal-400" : "text-slate-500"}`} />
+                            <span className="truncate">{file.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
-            ) : (
-              // Standard Directory Structure
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500">Project Skeleton Directory</span>
-                  <span className="text-[10px] bg-slate-900 px-2 py-0.5 rounded text-slate-400 font-mono">/signal-hunter</span>
+
+              {/* Quick info footer */}
+              <div className="p-4 border-t border-slate-900 bg-slate-950 flex items-center space-x-3 text-xs text-slate-400 flex-shrink-0">
+                <Info className="w-4 h-4 text-teal-500 flex-shrink-0" />
+                <span>Files are physically populated on your workspace disk for immediate checkout.</span>
+              </div>
+            </section>
+
+            {/* PANEL 2: CODE CONSOLE (9 cols) */}
+            <section id="code_viewer_panel" className="xl:col-span-9 flex flex-col bg-slate-950 overflow-hidden">
+              
+              {/* File details bar */}
+              <div className="px-5 py-3.5 border-b border-slate-900 flex items-center justify-between bg-slate-950/60">
+                <div className="flex items-center space-x-2.5 truncate">
+                  <FileText className="w-4 h-4 text-teal-400" />
+                  <div>
+                    <span className="text-xs font-mono font-medium text-slate-200">{selectedFile.path}</span>
+                    <span className="mx-2 text-slate-600">•</span>
+                    <span className="text-[10px] text-slate-400">{selectedFile.content.split("\n").length} lines</span>
+                  </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  {/* Folders List */}
-                  {Object.keys(expandedFolders).map((folder) => {
-                    const isExpanded = expandedFolders[folder];
-                    const files = getFilesByFolder(folder);
-                    return (
-                      <div key={folder} className="space-y-0.5">
-                        <button
-                          onClick={() => toggleFolder(folder)}
-                          className="w-full flex items-center justify-between px-2 py-1 hover:bg-slate-900/60 rounded text-left text-xs font-medium text-slate-300 hover:text-white transition group"
-                        >
-                          <div className="flex items-center space-x-2 truncate">
-                            {isExpanded ? (
-                              <ChevronDown className="w-3 h-3 text-slate-500" />
-                            ) : (
-                              <ChevronRight className="w-3 h-3 text-slate-500" />
-                            )}
-                            {isExpanded ? (
-                              <FolderOpen className="w-4 h-4 text-teal-500" />
-                            ) : (
-                              <Folder className="w-4 h-4 text-teal-600 group-hover:text-teal-500" />
-                            )}
-                            <span className="truncate">{folder}/</span>
-                          </div>
-                          <span className="text-[9px] font-mono text-slate-600 px-1">{files.length} items</span>
-                        </button>
+                <button
+                  id="copy_code_btn"
+                  onClick={handleCopyCode}
+                  className="flex items-center space-x-1.5 px-2.5 py-1 bg-slate-900 border border-slate-800 text-[11px] text-slate-300 hover:text-white rounded transition hover:border-slate-700 active:scale-95 cursor-pointer"
+                >
+                  {copiedFile ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Code</span>
+                    </>
+                  )}
+                </button>
+              </div>
 
-                        {isExpanded && (
-                          <div className="pl-6 border-l border-slate-900 space-y-0.5 ml-3.5 py-0.5">
-                            {files.map((file) => (
-                              <button
-                                key={file.path}
-                                onClick={() => setSelectedFile(file)}
-                                className={`w-full flex items-center space-x-2 px-2 py-1 rounded text-left text-xs transition ${
-                                  selectedFile.path === file.path
-                                    ? "bg-teal-950/40 text-teal-300 font-medium"
-                                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/40"
-                                }`}
-                              >
-                                <File className={`w-3.5 h-3.5 ${selectedFile.path === file.path ? "text-teal-400" : "text-slate-500"}`} />
-                                <span className="truncate">{file.name}</span>
-                              </button>
-                            ))}
-                          </div>
-                        )}
+              {/* File Description Header */}
+              <div className="px-5 py-3 bg-teal-950/10 border-b border-slate-900 text-xs text-slate-400 flex items-start space-x-2.5 flex-shrink-0">
+                <BookOpen className="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" />
+                <p>{selectedFile.description}</p>
+              </div>
+
+              {/* Editor Sandbox with custom style syntax highlighting */}
+              <div className="flex-1 overflow-auto bg-slate-950/80 p-5 font-mono text-xs leading-relaxed select-text">
+                <pre className="relative h-full overflow-visible whitespace-pre">
+                  {selectedFile.content.split("\n").map((line, idx) => {
+                    // Extremely simple regex highlighting for preview purposes
+                    let highlighted = line;
+                    
+                    // Color comments
+                    if (line.trim().startsWith("#") || line.trim().startsWith('"""') || (line.includes('"""') && !line.includes('Pydantic'))) {
+                      highlighted = `<span class="text-slate-500">${line}</span>`;
+                    } else {
+                      // Keywords
+                      highlighted = line
+                        .replace(/\b(def|class|import|from|return|if|elif|else|try|except|raise|as|pass|with|for|in|and|or|not)\b/g, '<span class="text-teal-400 font-semibold">$1</span>')
+                        // Pydantic/Types
+                        .replace(/\b(str|int|float|bool|datetime|List|Dict|Optional|Any|BaseModel|Field)\b/g, '<span class="text-blue-400 font-medium">$1</span>')
+                        // Class name declarations
+                        .replace(/\b(class\s+)([A-Za-z0-9_]+)/g, '$1<span class="text-emerald-300 font-bold">$2</span>')
+                        // Function definitions
+                        .replace(/\b(def\s+)([a-za-z0-9_]+)/g, '$1<span class="text-amber-200 font-medium">$2</span>');
+                    }
+
+                    return (
+                      <div key={idx} className="flex hover:bg-slate-900/40 px-2 rounded -mx-2">
+                        <span className="w-8 text-slate-700 select-none text-right pr-3 border-r border-slate-900 mr-4 text-[10px]">{idx + 1}</span>
+                        <span dangerouslySetInnerHTML={{ __html: highlighted || " " }} />
                       </div>
                     );
                   })}
-
-                  {/* Root files */}
-                  <div className="pt-2 border-t border-slate-900/60 space-y-1">
-                    <span className="text-[9px] uppercase font-semibold text-slate-600 px-2">Root Modules</span>
-                    {getRootFiles().map((file) => (
-                      <button
-                        key={file.path}
-                        onClick={() => setSelectedFile(file)}
-                        className={`w-full flex items-center space-x-2 px-2 py-1 rounded text-left text-xs transition ${
-                          selectedFile.path === file.path
-                            ? "bg-teal-950/40 text-teal-300 font-medium"
-                            : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/40"
-                        }`}
-                      >
-                        <File className={`w-3.5 h-3.5 ${selectedFile.path === file.path ? "text-teal-400" : "text-slate-500"}`} />
-                        <span className="truncate">{file.name}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                </pre>
               </div>
-            )}
+            </section>
           </div>
-
-          {/* Quick info footer */}
-          <div className="p-4 border-t border-slate-900 bg-slate-950 flex items-center space-x-3 text-xs text-slate-400">
-            <Info className="w-4 h-4 text-teal-500 flex-shrink-0" />
-            <span>Files are physically populated on your workspace disk for immediate checkout.</span>
-          </div>
-        </section>
-
-        {/* PANEL 2: CODE CONSOLE (5 cols) */}
-        <section id="code_viewer_panel" className="xl:col-span-5 border-r border-slate-900 flex flex-col bg-slate-950">
-          
-          {/* File details bar */}
-          <div className="px-5 py-3.5 border-b border-slate-900 flex items-center justify-between bg-slate-950/60">
-            <div className="flex items-center space-x-2.5 truncate">
-              <FileText className="w-4 h-4 text-teal-400" />
-              <div>
-                <span className="text-xs font-mono font-medium text-slate-200">{selectedFile.path}</span>
-                <span className="mx-2 text-slate-600">•</span>
-                <span className="text-[10px] text-slate-400">{selectedFile.content.split("\n").length} lines</span>
-              </div>
-            </div>
-
-            <button
-              id="copy_code_btn"
-              onClick={handleCopyCode}
-              className="flex items-center space-x-1.5 px-2.5 py-1 bg-slate-900 border border-slate-800 text-[11px] text-slate-300 hover:text-white rounded transition hover:border-slate-700 active:scale-95 cursor-pointer"
-            >
-              {copiedFile ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>Copy Code</span>
-                </>
-              )}
-            </button>
-          </div>
-
-          {/* File Description Header */}
-          <div className="px-5 py-3 bg-teal-950/10 border-b border-slate-900 text-xs text-slate-400 flex items-start space-x-2.5">
-            <BookOpen className="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" />
-            <p>{selectedFile.description}</p>
-          </div>
-
-          {/* Editor Sandbox with custom style syntax highlighting */}
-          <div className="flex-1 overflow-auto bg-slate-950/80 p-5 font-mono text-xs leading-relaxed select-text">
-            <pre className="relative h-full overflow-visible whitespace-pre">
-              {selectedFile.content.split("\n").map((line, idx) => {
-                // Extremely simple regex highlighting for preview purposes
-                let highlighted = line;
-                
-                // Color comments
-                if (line.trim().startsWith("#") || line.trim().startsWith('"""') || (line.includes('"""') && !line.includes('Pydantic'))) {
-                  highlighted = `<span class="text-slate-500">${line}</span>`;
-                } else {
-                  // Keywords
-                  highlighted = line
-                    .replace(/\b(def|class|import|from|return|if|elif|else|try|except|raise|as|pass|with|for|in|and|or|not)\b/g, '<span class="text-teal-400 font-semibold">$1</span>')
-                    // Pydantic/Types
-                    .replace(/\b(str|int|float|bool|datetime|List|Dict|Optional|Any|BaseModel|Field)\b/g, '<span class="text-blue-400 font-medium">$1</span>')
-                    // Class name declarations
-                    .replace(/\b(class\s+)([A-Za-z0-9_]+)/g, '$1<span class="text-emerald-300 font-bold">$2</span>')
-                    // Function definitions
-                    .replace(/\b(def\s+)([a-za-z0-9_]+)/g, '$1<span class="text-amber-200 font-medium">$2</span>');
-                }
-
-                return (
-                  <div key={idx} className="flex hover:bg-slate-900/40 px-2 rounded -mx-2">
-                    <span className="w-8 text-slate-700 select-none text-right pr-3 border-r border-slate-900 mr-4 text-[10px]">{idx + 1}</span>
-                    <span dangerouslySetInnerHTML={{ __html: highlighted || " " }} />
-                  </div>
-                );
-              })}
-            </pre>
-          </div>
-        </section>
-
-        {/* PANEL 3: SIMULATOR & SCHEMATICS (4 cols) */}
-        <section id="pipeline_controller_panel" className="xl:col-span-4 flex flex-col bg-slate-950/50">
-          
-          {/* Section Selector Tab */}
-          <div className="px-5 py-3 border-b border-slate-900 bg-slate-950 flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Terminal className="w-4 h-4 text-teal-400" />
-              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Execution Sandbox</span>
-            </div>
-            
-            <button
-              id="simulate_pipeline_btn"
-              onClick={handleSimulatePipeline}
-              disabled={isSimulating}
-              className="flex items-center space-x-2 px-3 py-1.5 bg-teal-600 hover:bg-teal-500 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded text-xs font-semibold tracking-wide transition active:scale-95 disabled:pointer-events-none cursor-pointer"
-            >
-              <Play className="w-3.5 h-3.5 fill-white" />
-              <span>{isSimulating ? "CRAWLING PIPELINE..." : "RUN DRY-RUN SIMULATOR"}</span>
-            </button>
-          </div>
-
-          {/* Active Schematics Node Chart */}
-          <div className="p-4 border-b border-slate-900 bg-slate-950/30">
-            <span className="text-[9px] uppercase font-bold tracking-wider text-slate-500 block mb-3">Live Scaffolding Schematics</span>
-            
-            <div className="grid grid-cols-5 gap-1 text-center select-none text-[10px] font-mono">
-              <div className={`p-1.5 border rounded flex flex-col items-center justify-center transition-all ${
-                simStep === "collect" 
-                  ? "border-teal-500 bg-teal-950/30 text-teal-300 ring-1 ring-teal-500/50 animate-pulse" 
-                  : simStep !== "idle" && simStep !== "config" ? "border-emerald-900/60 bg-slate-900/40 text-slate-500" : "border-slate-900 bg-slate-900/20 text-slate-400"
-              }`}>
-                <span className="font-semibold block truncate">COLLECT</span>
-                <span className="text-[8px] text-slate-500 block mt-0.5">arXiv/Feeds</span>
-              </div>
+        ) : (
+          <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+            {/* PANEL 3A: RUN CONTROL & TERMINAL LOGS (5 cols) */}
+            <section id="execution_console_panel" className="lg:col-span-5 border-r border-slate-900 flex flex-col bg-slate-950 overflow-hidden">
               
-              <div className="flex items-center justify-center text-slate-700">
-                <ArrowRight className="w-3.5 h-3.5" />
+              {/* Section Selector Tab */}
+              <div className="px-5 py-3.5 border-b border-slate-900 bg-slate-950 flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <Terminal className="w-4 h-4 text-teal-400" />
+                  <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Execution Sandbox</span>
+                </div>
+                
+                <button
+                  id="simulate_pipeline_btn"
+                  onClick={handleSimulatePipeline}
+                  disabled={isSimulating}
+                  className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 disabled:from-slate-800 disabled:to-slate-800 text-white rounded-lg text-xs font-semibold tracking-wide transition active:scale-95 disabled:pointer-events-none cursor-pointer"
+                >
+                  <Play className="w-3.5 h-3.5 fill-white animate-pulse" />
+                  <span>{isSimulating ? "RUNNING PIPELINE..." : "RUN DRY-RUN SIMULATOR"}</span>
+                </button>
               </div>
 
-              <div className={`p-1.5 border rounded flex flex-col items-center justify-center transition-all ${
-                simStep === "analyze" 
-                  ? "border-teal-500 bg-teal-950/30 text-teal-300 ring-1 ring-teal-500/50 animate-pulse" 
-                  : simStep !== "idle" && simStep !== "config" && simStep !== "collect" ? "border-emerald-900/60 bg-slate-900/40 text-slate-500" : "border-slate-900 bg-slate-900/20 text-slate-400"
-              }`}>
-                <span className="font-semibold block truncate">AI COG</span>
-                <span className="text-[8px] text-slate-500 block mt-0.5">Gemini</span>
-              </div>
-
-              <div className="flex items-center justify-center text-slate-700">
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-
-              <div className={`p-1.5 border rounded flex flex-col items-center justify-center transition-all ${
-                simStep === "verify" 
-                  ? "border-teal-500 bg-teal-950/30 text-teal-300 ring-1 ring-teal-500/50 animate-pulse" 
-                  : simStep !== "idle" && simStep !== "config" && simStep !== "collect" && simStep !== "analyze" ? "border-emerald-900/60 bg-slate-900/40 text-slate-500" : "border-slate-900 bg-slate-900/20 text-slate-400"
-              }`}>
-                <span className="font-semibold block truncate">VERIFY</span>
-                <span className="text-[8px] text-slate-500 block mt-0.5">Scoring Gates</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Simulated Logging Output */}
-          <div className="h-44 bg-black p-4 font-mono text-[10px] text-slate-400 border-b border-slate-900 overflow-y-auto flex flex-col space-y-1.5">
-            {simLogs.length === 0 ? (
-              <div className="flex-1 flex flex-col items-center justify-center text-slate-600 text-center select-none py-4">
-                <Terminal className="w-6 h-6 text-slate-800 mb-2" />
-                <span>Ready to execute main.py. Click run dry-run to stream log entries.</span>
-              </div>
-            ) : (
-              simLogs.map((log, index) => {
-                let color = "text-slate-400";
-                if (log.includes("[COLLECTION]")) color = "text-blue-400";
-                if (log.includes("[ANALYSIS]")) color = "text-amber-400";
-                if (log.includes("[VERIFICATION]")) color = "text-indigo-400";
-                if (log.includes("[PERSISTENCE]")) color = "text-purple-400";
-                if (log.includes("[DELIVERY]")) color = "text-teal-400";
-                if (log.includes("VERIFIED")) color = "text-emerald-400 font-semibold";
-                if (log.includes("REJECTED")) color = "text-rose-400 font-semibold";
-                if (log.includes("===") || log.includes("Starting")) color = "text-white font-bold";
-
-                return (
-                  <div key={index} className={`leading-relaxed whitespace-pre-wrap ${color}`}>
-                    {log}
+              {/* Active Schematics Node Chart */}
+              <div className="p-4 border-b border-slate-900 bg-slate-950/30">
+                <span className="text-[9px] uppercase font-bold tracking-wider text-slate-500 block mb-3">Live Scaffolding Schematics</span>
+                
+                <div className="grid grid-cols-5 gap-1 text-center select-none text-[10px] font-mono">
+                  <div className={`p-1.5 border rounded flex flex-col items-center justify-center transition-all ${
+                    simStep === "collect" 
+                      ? "border-teal-500 bg-teal-950/30 text-teal-300 ring-1 ring-teal-500/50 animate-pulse" 
+                      : simStep !== "idle" && simStep !== "config" ? "border-emerald-900/60 bg-slate-900/40 text-slate-500" : "border-slate-900 bg-slate-900/20 text-slate-400"
+                  }`}>
+                    <span className="font-semibold block truncate">COLLECT</span>
+                    <span className="text-[8px] text-slate-500 block mt-0.5">arXiv/Feeds</span>
                   </div>
-                );
-              })
-            )}
-            <div ref={consoleEndRef} />
-          </div>
+                  
+                  <div className="flex items-center justify-center text-slate-700">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
 
-          {/* Daily Intelligence Briefing Output Visualizer */}
-          <div className="flex-1 flex flex-col overflow-hidden bg-slate-950/20">
-            <div className="px-4 py-2 border-b border-slate-900 bg-slate-950/60 flex items-center justify-between">
-              <div className="flex items-center space-x-1.5 text-xs text-slate-300">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span className="font-medium">Output: daily_intelligence_brief.md</span>
+                  <div className={`p-1.5 border rounded flex flex-col items-center justify-center transition-all ${
+                    simStep === "analyze" 
+                      ? "border-teal-500 bg-teal-950/30 text-teal-300 ring-1 ring-teal-500/50 animate-pulse" 
+                      : simStep !== "idle" && simStep !== "config" && simStep !== "collect" ? "border-emerald-900/60 bg-slate-900/40 text-slate-500" : "border-slate-900 bg-slate-900/20 text-slate-400"
+                  }`}>
+                    <span className="font-semibold block truncate">AI COG</span>
+                    <span className="text-[8px] text-slate-500 block mt-0.5">Gemini</span>
+                  </div>
+
+                  <div className="flex items-center justify-center text-slate-700">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+
+                  <div className={`p-1.5 border rounded flex flex-col items-center justify-center transition-all ${
+                    simStep === "verify" 
+                      ? "border-teal-500 bg-teal-950/30 text-teal-300 ring-1 ring-teal-500/50 animate-pulse" 
+                      : simStep !== "idle" && simStep !== "config" && simStep !== "collect" && simStep !== "analyze" ? "border-emerald-900/60 bg-slate-900/40 text-slate-500" : "border-slate-900 bg-slate-900/20 text-slate-400"
+                  }`}>
+                    <span className="font-semibold block truncate">VERIFY</span>
+                    <span className="text-[8px] text-slate-500 block mt-0.5">Scoring Gates</span>
+                  </div>
+                </div>
               </div>
 
-              {simulatedRunCount > 0 && (
-                <div className="flex space-x-1 bg-slate-900 p-0.5 rounded text-[10px] border border-slate-800 font-semibold">
-                  <button
-                    onClick={() => setReportTab("briefing")}
-                    className={`px-2 py-0.5 rounded cursor-pointer ${reportTab === "briefing" ? "bg-teal-950 text-teal-400 border border-teal-900/50" : "text-slate-400 hover:text-slate-200"}`}
-                  >
-                    Styled Report
-                  </button>
-                  <button
-                    onClick={() => setReportTab("markdown")}
-                    className={`px-2 py-0.5 rounded cursor-pointer ${reportTab === "markdown" ? "bg-teal-950 text-teal-400 border border-teal-900/50" : "text-slate-400 hover:text-slate-200"}`}
-                  >
-                    Raw MD
-                  </button>
-                  <button
-                    onClick={() => setReportTab("signals")}
-                    className={`px-2 py-0.5 rounded cursor-pointer ${reportTab === "signals" ? "bg-teal-950 text-teal-400 border border-teal-900/50" : "text-slate-400 hover:text-slate-200"}`}
-                  >
-                    Signals Grid
-                  </button>
+              {/* Simulated Logging Output */}
+              <div className="flex-1 bg-black p-5 font-mono text-[10px] text-slate-400 overflow-y-auto flex flex-col space-y-2">
+                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-600 mb-1 border-b border-slate-900 pb-1.5 flex items-center justify-between">
+                  <span>Runtime Log stream</span>
+                  {isSimulating && (
+                    <span className="flex items-center space-x-1.5 text-teal-400 animate-pulse text-[9px]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                      <span>STREAMING</span>
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
+                {simLogs.length === 0 ? (
+                  <div className="flex-1 flex flex-col items-center justify-center text-slate-600 text-center select-none py-12">
+                    <Terminal className="w-8 h-8 text-slate-800 mb-3" />
+                    <span>Ready to execute main.py. Click run dry-run to stream log entries.</span>
+                  </div>
+                ) : (
+                  simLogs.map((log, index) => {
+                    let color = "text-slate-400";
+                    if (log.includes("[COLLECTION]")) color = "text-blue-400";
+                    if (log.includes("[ANALYSIS]")) color = "text-amber-400";
+                    if (log.includes("[VERIFICATION]")) color = "text-indigo-400";
+                    if (log.includes("[PERSISTENCE]")) color = "text-purple-400";
+                    if (log.includes("[DELIVERY]")) color = "text-teal-400";
+                    if (log.includes("VERIFIED")) color = "text-emerald-400 font-semibold";
+                    if (log.includes("REJECTED")) color = "text-rose-400 font-semibold";
+                    if (log.includes("===") || log.includes("Starting")) color = "text-white font-bold";
 
-            <div className="flex-1 overflow-y-auto p-4 select-text">
-              {simulatedRunCount === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-slate-600 text-center select-none py-12">
-                  <FileText className="w-10 h-10 text-slate-800 mb-2" />
-                  <p className="text-xs max-w-xs font-mono">
-                    The daily briefing file compiles automatically after a pipeline run finishes. Run the simulator above to examine the generated intelligence.
-                  </p>
-                </div>
-              ) : (
-                <div className="h-full">
-                  {reportTab === "briefing" && (
-                    <div className="space-y-4 text-xs select-text">
-                      <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-lg flex items-center justify-between">
-                        <div>
-                          <h4 className="font-bold text-slate-200 text-sm">🎯 Signal Hunter Briefing</h4>
-                          <span className="text-[10px] text-slate-500">Synthesized 2026-07-06 • Automated Build</span>
-                        </div>
-                        <span className="px-2 py-1 bg-emerald-950 text-emerald-400 font-mono border border-emerald-900/50 rounded-full font-bold">
-                          Average confidence: 0.94
-                        </span>
+                    return (
+                      <div key={index} className={`leading-relaxed whitespace-pre-wrap ${color}`}>
+                        {log}
                       </div>
+                    );
+                  })
+                )}
+                <div ref={consoleEndRef} />
+              </div>
+            </section>
 
-                      <div className="space-y-3">
-                        {/* CATEGORY 1 */}
-                        <div className="space-y-2">
-                          <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block bg-teal-950/20 px-2 py-1 border-l-2 border-teal-500 rounded">
-                            Category: Research Paper
-                          </span>
+            {/* PANEL 3B: DAILY BRIEFING REPORT OUTPUT (7 cols) */}
+            <section id="execution_report_panel" className="lg:col-span-7 flex flex-col bg-slate-950/20 overflow-hidden">
+              {/* Daily Intelligence Briefing Output Visualizer */}
+              <div className="flex-1 flex flex-col overflow-hidden">
+                <div className="px-5 py-3.5 border-b border-slate-900 bg-slate-950/60 flex items-center justify-between">
+                  <div className="flex items-center space-x-1.5 text-xs text-slate-300">
+                    <Sparkles className="w-4 h-4 text-amber-400" />
+                    <span className="font-medium">Output: daily_intelligence_brief.md</span>
+                  </div>
 
-                          <div className="p-3 bg-slate-900/30 border border-slate-900 rounded-lg space-y-2">
-                            <div className="flex items-center justify-between">
-                              <h5 className="font-semibold text-slate-200">1. LoRA: Low-Rank Adaptation of Large Language Models</h5>
-                              <span className="text-[10px] bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded font-mono font-bold">Score 0.95</span>
+                  {simulatedRunCount > 0 && (
+                    <div className="flex space-x-1 bg-slate-900 p-0.5 rounded-lg border border-slate-800 font-semibold">
+                      <button
+                        onClick={() => setReportTab("briefing")}
+                        className={`px-3 py-1 rounded-md text-xs cursor-pointer transition ${reportTab === "briefing" ? "bg-teal-950 text-teal-400 border border-teal-900/50" : "text-slate-400 hover:text-slate-200"}`}
+                      >
+                        Styled Report
+                      </button>
+                      <button
+                        onClick={() => setReportTab("markdown")}
+                        className={`px-3 py-1 rounded-md text-xs cursor-pointer transition ${reportTab === "markdown" ? "bg-teal-950 text-teal-400 border border-teal-900/50" : "text-slate-400 hover:text-slate-200"}`}
+                      >
+                        Raw MD
+                      </button>
+                      <button
+                        onClick={() => setReportTab("signals")}
+                        className={`px-3 py-1 rounded-md text-xs cursor-pointer transition ${reportTab === "signals" ? "bg-teal-950 text-teal-400 border border-teal-900/50" : "text-slate-400 hover:text-slate-200"}`}
+                      >
+                        Signals Grid
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-6 select-text">
+                  {simulatedRunCount === 0 ? (
+                    <div className="h-full flex flex-col items-center justify-center text-slate-600 text-center select-none py-12">
+                      <FileText className="w-12 h-12 text-slate-800 mb-3" />
+                      <p className="text-xs max-w-xs font-mono text-slate-500">
+                        The daily briefing file compiles automatically after a pipeline run finishes. Run the simulator to examine the generated intelligence.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="h-full">
+                      {reportTab === "briefing" && (
+                        <div className="space-y-4 text-xs select-text">
+                          <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-lg flex items-center justify-between">
+                            <div>
+                              <h4 className="font-bold text-slate-200 text-sm">🎯 Signal Hunter Briefing</h4>
+                              <span className="text-[10px] text-slate-500">Synthesized 2026-07-06 • Automated Build</span>
                             </div>
-                            <p className="text-slate-400 italic leading-relaxed text-[11px] bg-slate-950 p-2 rounded-lg border border-slate-900">
-                              "Introduction of structural parameter adapters to preserve pretrained base layers while compressing learning dimensions dramatically."
-                            </p>
-                            <div className="space-y-1">
-                              <span className="text-[10px] font-semibold text-slate-500 block">Extracted Future Signals:</span>
-                              <div className="flex flex-wrap gap-1">
-                                <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 Adapter fine-tuning framework</span>
-                                <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 Low-Rank neural adapter strategy</span>
+                            <span className="px-2 py-1 bg-emerald-950 text-emerald-400 font-mono border border-emerald-900/50 rounded-full font-bold">
+                              Average confidence: 0.94
+                            </span>
+                          </div>
+
+                          <div className="space-y-3">
+                            {/* CATEGORY 1 */}
+                            <div className="space-y-2">
+                              <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block bg-teal-950/20 px-2 py-1 border-l-2 border-teal-500 rounded">
+                                Category: Research Paper
+                              </span>
+
+                              <div className="p-3 bg-slate-900/30 border border-slate-900 rounded-lg space-y-2">
+                                <div className="flex items-center justify-between">
+                                  <h5 className="font-semibold text-slate-200">1. LoRA: Low-Rank Adaptation of Large Language Models</h5>
+                                  <span className="text-[10px] bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded font-mono font-bold">Score 0.95</span>
+                                </div>
+                                <p className="text-slate-400 italic leading-relaxed text-[11px] bg-slate-950 p-2 rounded-lg border border-slate-900">
+                                  "Introduction of structural parameter adapters to preserve pretrained base layers while compressing learning dimensions dramatically."
+                                </p>
+                                <div className="space-y-1">
+                                  <span className="text-[10px] font-semibold text-slate-500 block">Extracted Future Signals:</span>
+                                  <div className="flex flex-wrap gap-1">
+                                    <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 Adapter fine-tuning framework</span>
+                                    <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 Low-Rank neural adapter strategy</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* CATEGORY 2 */}
+                            <div className="space-y-2">
+                              <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block bg-teal-950/20 px-2 py-1 border-l-2 border-teal-500 rounded">
+                                Category: GitHub Repository
+                              </span>
+
+                              <div className="p-3 bg-slate-900/30 border border-slate-900 rounded-lg space-y-2">
+                                <div className="flex items-center justify-between">
+                                  <h5 className="font-semibold text-slate-200">2. vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention</h5>
+                                  <span className="text-[10px] bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded font-mono font-bold">Score 0.92</span>
+                                </div>
+                                <p className="text-slate-400 italic leading-relaxed text-[11px] bg-slate-950 p-2 rounded-lg border border-slate-900">
+                                  "vLLM achieves state-of-the-art throughput by using PagedAttention, managing sequence cache allocation cleanly."
+                                </p>
+                                <div className="space-y-1">
+                                  <span className="text-[10px] font-semibold text-slate-500 block">Extracted Future Signals:</span>
+                                  <div className="flex flex-wrap gap-1">
+                                    <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 PagedAttention memory algorithm</span>
+                                    <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 Zero-waste inference optimization</span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
+                      )}
 
-                        {/* CATEGORY 2 */}
-                        <div className="space-y-2">
-                          <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block bg-teal-950/20 px-2 py-1 border-l-2 border-teal-500 rounded">
-                            Category: GitHub Repository
-                          </span>
+                      {reportTab === "markdown" && (
+                        <div className="h-full flex flex-col space-y-3 font-mono text-[10px]">
+                          <div className="flex items-center justify-between">
+                            <span className="text-slate-500 text-[9px]">Markdown Briefing Text</span>
+                            <button
+                              onClick={copyReportToClipboard}
+                              className="flex items-center space-x-1 px-2 py-0.5 bg-slate-900 border border-slate-800 rounded text-slate-400 hover:text-slate-200 text-[10px]"
+                            >
+                              {copiedReport ? (
+                                <>
+                                  <Check className="w-3 h-3 text-emerald-400" />
+                                  <span className="text-emerald-400">Copied!</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>Copy Raw MD</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                          <textarea
+                            readOnly
+                            value={mockReportMarkdown}
+                            className="flex-1 w-full bg-slate-950 border border-slate-900 p-4 rounded-xl text-slate-400 font-mono focus:outline-none min-h-[400px] select-text"
+                          />
+                        </div>
+                      )}
 
-                          <div className="p-3 bg-slate-900/30 border border-slate-900 rounded-lg space-y-2">
-                            <div className="flex items-center justify-between">
-                              <h5 className="font-semibold text-slate-200">2. vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention</h5>
-                              <span className="text-[10px] bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded font-mono font-bold">Score 0.92</span>
-                            </div>
-                            <p className="text-slate-400 italic leading-relaxed text-[11px] bg-slate-950 p-2 rounded-lg border border-slate-900">
-                              "vLLM achieves state-of-the-art throughput by using PagedAttention, managing sequence cache allocation cleanly."
-                            </p>
-                            <div className="space-y-1">
-                              <span className="text-[10px] font-semibold text-slate-500 block">Extracted Future Signals:</span>
-                              <div className="flex flex-wrap gap-1">
-                                <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 PagedAttention memory algorithm</span>
-                                <span className="bg-slate-900 text-slate-300 px-2 py-0.5 rounded text-[10px] border border-slate-800">🚀 Zero-waste inference optimization</span>
-                              </div>
-                            </div>
+                      {reportTab === "signals" && (
+                        <div className="space-y-3">
+                          <span className="text-[10px] text-slate-500 uppercase font-semibold">Verified Signal Index</span>
+                          
+                          <div className="border border-slate-900 rounded-lg overflow-hidden text-[11px] font-mono">
+                            <table className="w-full text-left border-collapse">
+                              <thead>
+                                <tr className="bg-slate-900 text-slate-400 border-b border-slate-900">
+                                  <th className="p-3">Title</th>
+                                  <th className="p-3">Source</th>
+                                  <th className="p-3 text-right">Confidence</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-900">
+                                <tr className="hover:bg-slate-900/20">
+                                  <td className="p-3 font-medium text-slate-200 truncate max-w-[150px]">LoRA Parameter Adaptation</td>
+                                  <td className="p-3 text-slate-400">Paper</td>
+                                  <td className="p-3 text-right text-emerald-400 font-bold">0.95</td>
+                                </tr>
+                                <tr className="hover:bg-slate-900/20">
+                                  <td className="p-3 font-medium text-slate-200 truncate max-w-[150px]">vLLM PagedAttention</td>
+                                  <td className="p-3 text-slate-400">GitHub</td>
+                                  <td className="p-3 text-right text-emerald-400 font-bold">0.92</td>
+                                </tr>
+                                <tr className="hover:bg-slate-900/20 bg-rose-950/10 text-slate-500">
+                                  <td className="p-3 truncate max-w-[150px] line-through">Frontier Model Safe Preparedness</td>
+                                  <td className="p-3">Blog</td>
+                                  <td className="p-3 text-right text-rose-500">0.65</td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {reportTab === "markdown" && (
-                    <div className="h-full flex flex-col space-y-3 font-mono text-[10px]">
-                      <div className="flex items-center justify-between">
-                        <span className="text-slate-500 text-[9px]">Markdown Briefing Text</span>
-                        <button
-                          onClick={copyReportToClipboard}
-                          className="flex items-center space-x-1 px-2 py-0.5 bg-slate-900 border border-slate-800 rounded text-slate-400 hover:text-slate-200 text-[10px]"
-                        >
-                          {copiedReport ? (
-                            <>
-                              <Check className="w-3 h-3 text-emerald-400" />
-                              <span className="text-emerald-400">Copied!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-3 h-3" />
-                              <span>Copy Raw MD</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-                      <textarea
-                        readOnly
-                        value={mockReportMarkdown}
-                        className="flex-1 w-full bg-slate-950 border border-slate-900 p-3 rounded text-slate-400 font-mono focus:outline-none h-48 select-text"
-                      />
-                    </div>
-                  )}
-
-                  {reportTab === "signals" && (
-                    <div className="space-y-3">
-                      <span className="text-[10px] text-slate-500 uppercase font-semibold">Verified Signal Index</span>
-                      
-                      <div className="border border-slate-900 rounded-lg overflow-hidden text-[11px] font-mono">
-                        <table className="w-full text-left border-collapse">
-                          <thead>
-                            <tr className="bg-slate-900 text-slate-400 border-b border-slate-900">
-                              <th className="p-2">Title</th>
-                              <th className="p-2">Source</th>
-                              <th className="p-2 text-right">Confidence</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-slate-900">
-                            <tr className="hover:bg-slate-900/20">
-                              <td className="p-2 font-medium text-slate-200 truncate max-w-[150px]">LoRA Parameter Adaptation</td>
-                              <td className="p-2 text-slate-400">Paper</td>
-                              <td className="p-2 text-right text-emerald-400">0.95</td>
-                            </tr>
-                            <tr className="hover:bg-slate-900/20">
-                              <td className="p-2 font-medium text-slate-200 truncate max-w-[150px]">vLLM PagedAttention</td>
-                              <td className="p-2 text-slate-400">GitHub</td>
-                              <td className="p-2 text-right text-emerald-400">0.92</td>
-                            </tr>
-                            <tr className="hover:bg-slate-900/20 bg-rose-950/10 text-slate-500">
-                              <td className="p-2 truncate max-w-[150px] line-through">Frontier Model Safe Preparedness</td>
-                              <td className="p-2">Blog</td>
-                              <td className="p-2 text-right text-rose-500">0.65</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                      )}
                     </div>
                   )}
                 </div>
-              )}
-            </div>
+              </div>
+            </section>
           </div>
-        </section>
+        )}
 
       </main>
     </div>

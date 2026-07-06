@@ -1,0 +1,63 @@
+{
+  "unique_id": "docs_rust_async_runtime",
+  "title": "Tokio: An Asynchronous Rust Runtime Platform",
+  "source_name": "Tokio Documentation",
+  "source_type": "documentation",
+  "url": "https://tokio.rs/tokio/tutorial",
+  "publication_date": "2020-10-01T00:00:00Z",
+  "discovered_date": "2026-07-06T04:00:00Z",
+  "authors": [
+    {
+      "name": "Carl Lerche",
+      "github_username": "carllerche"
+    }
+  ],
+  "organization": "Tokio Project",
+  "summary": "Tokio is an event-driven, non-blocking I/O platform for writing asynchronous applications with the Rust programming language. It provides a multi-threaded, work-stealing task scheduler.",
+  "tags": ["Async", "Asynchronous Runtime", "Work Stealing", "Rust", "I/O Multiplexing"],
+  "categories": ["Runtime Platforms", "Concurrency"],
+  "technologies": ["Tokio", "Mio"],
+  "programming_languages": ["Rust"],
+  "paper_type": "Developer Guides & Documentation",
+  "github_repository": "https://github.com/tokio-rs/tokio",
+  "documentation_links": ["https://docs.rs/tokio/latest/tokio/"],
+  "related_links": ["https://crates.io/crates/tokio"],
+  "seller_pitch": "Build reliable network applications without sacrificing speed. Tokio is designed to support millions of concurrent connections out-of-the-box.",
+  "why_it_matters": "Standardizes async networking in Rust, paving the way for hyper-performant web servers and database drivers.",
+  "build_opportunities": [
+    "Develop real-time WebSocket messaging systems in Rust using Tokio and Axum",
+    "Build high-throughput reverse proxies with custom routing filters"
+  ],
+  "risks": [
+    "Steep learning curve of Rust lifetime management and pin projection in async contexts",
+    "Debugging difficulty during deep work-stealing thread migrations"
+  ],
+  "opportunity_score": 0.91,
+  "engineering_score": 0.97,
+  "scientific_score": 0.85,
+  "startup_score": 0.88,
+  "confidence_score": 0.97,
+  "novelty_score": 0.89,
+  "verification_status": {
+    "state": "verified",
+    "verified_by": "SignalVerifier-v1",
+    "verified_at": "2026-07-06T04:13:00Z",
+    "score": 0.95,
+    "notes": "Highly validated, battle-tested asynchronous execution architecture. Fundamental foundation of the modern Rust ecosystem.",
+    "is_breakthrough": true
+  },
+  "trend_metadata": {
+    "velocity": 85.0,
+    "sentiment_score": 0.88,
+    "interest_level": "high",
+    "growth_percentage": 5.0,
+    "mentions_count": 3200,
+    "sources_count": 82
+  },
+  "duplicate_of": null,
+  "version": "1.0.0",
+  "raw_metadata": {
+    "crate_version": "1.35.0",
+    "total_downloads": 150000000
+  }
+}

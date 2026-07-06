@@ -1,0 +1,62 @@
+{
+  "unique_id": "blog_netflix_recommendation",
+  "title": "Netflix: Key-Value Cache Architecture and SSD Tiering for Scale",
+  "source_name": "Netflix Tech Blog",
+  "source_type": "engineering_blog",
+  "url": "https://netflixtechblog.com/key-value-cache-ssd-tiering",
+  "publication_date": "2024-03-12T00:00:00Z",
+  "discovered_date": "2026-07-06T04:00:00Z",
+  "authors": [
+    {
+      "name": "Netflix Cloud Infrastructure Team"
+    }
+  ],
+  "organization": "Netflix",
+  "summary": "A deep dive into Netflix's dynamic key-value storage system utilizing SSD storage tiering to cache personalization profiles, optimizing RAM utilization and reducing infrastructure costs.",
+  "tags": ["Caching", "SSD Tiering", "Key-Value Store", "Scaling"],
+  "categories": ["Distributed Systems", "Cloud Infrastructure"],
+  "technologies": ["EVCache", "RocksDB", "AWS EC2"],
+  "programming_languages": ["Java", "C++"],
+  "paper_type": "Engineering Article",
+  "github_repository": null,
+  "documentation_links": [],
+  "related_links": [],
+  "seller_pitch": "Leverage solid-state technology to achieve RAM-like read latency at a tenth of the memory-hardware budget.",
+  "why_it_matters": "Provides an architectural blueprint for scaling real-time personalization caches without incurring runaway RAM expenses.",
+  "build_opportunities": [
+    "Open-source a lightweight RocksDB-based SSD caching proxy for Redis",
+    "Build a custom tiering storage adapter for containerized SQLite"
+  ],
+  "risks": [
+    "Increased latency spikes during intense cache eviction cycles",
+    "Higher wear-and-tear degradation on target SSD hardware under extreme write loads"
+  ],
+  "opportunity_score": 0.82,
+  "engineering_score": 0.89,
+  "scientific_score": 0.72,
+  "startup_score": 0.78,
+  "confidence_score": 0.95,
+  "novelty_score": 0.78,
+  "verification_status": {
+    "state": "verified",
+    "verified_by": "SignalVerifier-v1",
+    "verified_at": "2026-07-06T04:12:00Z",
+    "score": 0.88,
+    "notes": "Solid enterprise architecture article. High credibility but represents an incremental system optimization rather than a fundamental scientific discovery.",
+    "is_breakthrough": false
+  },
+  "trend_metadata": {
+    "velocity": 45.0,
+    "sentiment_score": 0.76,
+    "interest_level": "medium",
+    "growth_percentage": 15.5,
+    "mentions_count": 310,
+    "sources_count": 12
+  },
+  "duplicate_of": null,
+  "version": "1.0.0",
+  "raw_metadata": {
+    "medium_claps": 1200,
+    "read_time_minutes": 8
+  }
+}
