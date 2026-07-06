@@ -1,0 +1,6 @@
+{
+  "name": "Signal Hunter",
+  "description": "An AI-powered research intelligence pipeline designed to discover emerging tech trends, startups, and scientific breakthroughs before they go mainstream.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

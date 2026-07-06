@@ -1,0 +1,5 @@
+# Core dependencies for Signal Hunter pipeline
+pydantic>=2.6.0
+PyYAML>=6.0.1
+requests>=2.31.0
+typing-extensions>=4.9.0
