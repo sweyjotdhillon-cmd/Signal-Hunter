@@ -72,3 +72,27 @@ class DeliveryError(SignalHunterError):
     """Raised when the report generation or delivery channel (e.g. Email, Slack, Console) fails."""
 
     pass
+
+
+class NormalizationError(SignalHunterError):
+    """Raised when a normalizer phase fails to standardize research items."""
+
+    pass
+
+
+class DeduplicationError(SignalHunterError):
+    """Raised when deduplication fails or encounters corrupted data."""
+
+    pass
+
+
+class ScoringError(SignalHunterError):
+    """Raised when evaluation scoring fails or gets out of bounds."""
+
+    pass
+
+
+class PipelineError(SignalHunterError):
+    """Raised when the PipelineManager orchestrating workflow encounters a stage failure."""
+
+    pass

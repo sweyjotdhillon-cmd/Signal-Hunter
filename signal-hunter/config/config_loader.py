@@ -28,6 +28,8 @@ class AnalyzerConfig(BaseModel):
     model_name: str = "gemini-2.5-flash"
     temperature: float = 0.1
     max_tokens: int = 1500
+    api_key: Optional[str] = Field(default=None)
+    api_url: Optional[str] = Field(default=None)
 
 
 class VerifierConfig(BaseModel):

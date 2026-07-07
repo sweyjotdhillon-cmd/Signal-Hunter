@@ -5,5 +5,6 @@ Houses all source integrations (papers, blogs, github, etc.) inheriting from Bas
 """
 
 from collectors.base import BaseCollector
+from collectors.arxiv import ArXivCollector
 
-__all__ = ["BaseCollector"]
+__all__ = ["BaseCollector", "ArXivCollector"]
