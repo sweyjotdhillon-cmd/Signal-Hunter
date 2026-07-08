@@ -1,0 +1,110 @@
+{
+    "unique_id": "2607.06309v1",
+    "title": "Token-Based Dual-view Fusion and Adaptation of Large Vision Models for Breast Cancer Classification",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.06309v1",
+    "publication_date": "2026-07-07T14:11:54Z",
+    "discovered_date": "2026-07-08T08:44:14.754469Z",
+    "authors": [
+        {
+            "name": "Aysan Ghayouri Pirsoltan",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Shima Babakordi",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Mohammad Reza Mohammadi",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "Accurate breast cancer classification from mammography requires effective integration of complementary information from craniocaudal (CC) and mediolateral oblique (MLO) views, which provide a more complete characterization of breast abnormalities. However, existing multi-view learning approaches typically rely on feature-level aggregation or single-stage cross-attention, which can entangle view-specific and shared representations and restrict interaction to limited network depths. To address these limitations, we propose a token-centric dual-view learning framework that unifies prompt-based adaptation and cross-view fusion within a frozen vision transformer backbone. The framework reformulates inter-view interaction as structured token-level communication, where dedicated fusion tokens explicitly encode bidirectional information exchange between CC and MLO views via cross-attention, serving as intermediate carriers of cross-view dependencies rather than relying on direct feature fusion. Unlike conventional methods that apply fusion at a single layer, fusion modules are inserted at multiple transformer depths, enabling progressive and repeated interaction across the encoder hierarchy. Fusion tokens are reintegrated into the token sequence and refined by subsequent transformer layers, facilitating hierarchical propagation of complementary information while preserving view-specific structure. Experiments on VinDr-Mammo and CMMD datasets demonstrate consistent improvements over linear probing, prompt-only adaptation, and conventional fusion baselines. On the VinDr-Mammo BI-RADS classification task, the framework achieves 50.40% F1-score and 0.8090 AUC, including a 0.10 AUC improvement over a dual-view fusion baseline in the binary setting. Ablation studies further validate the effectiveness of token-based fusion and multi-depth interaction design.",
+    "tags": [
+        "cs.cv",
+        "cs.ai"
+    ],
+    "categories": [
+        "cs.CV",
+        "cs.AI"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.4,
+    "engineering_score": 0.5,
+    "scientific_score": 0.8,
+    "startup_score": 0.4,
+    "confidence_score": 0.5666666666666668,
+    "novelty_score": 0.5,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-08T08:44:14.824752",
+        "score": 1.0,
+        "notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.06309v1",
+        "primary_category": "cs.CV",
+        "doi": null,
+        "updated": "2026-07-07T14:11:54Z",
+        "version": "1"
+    },
+    "raw_content": "Accurate breast cancer classification from mammography requires effective integration of complementary information from craniocaudal (CC) and mediolateral oblique (MLO) views, which provide a more complete characterization of breast abnormalities. However, existing multi-view learning approaches typically rely on feature-level aggregation or single-stage cross-attention, which can entangle view-specific and shared representations and restrict interaction to limited network depths. To address these limitations, we propose a token-centric dual-view learning framework that unifies prompt-based adaptation and cross-view fusion within a frozen vision transformer backbone. The framework reformulates inter-view interaction as structured token-level communication, where dedicated fusion tokens explicitly encode bidirectional information exchange between CC and MLO views via cross-attention, serving as intermediate carriers of cross-view dependencies rather than relying on direct feature fusion. Unlike conventional methods that apply fusion at a single layer, fusion modules are inserted at multiple transformer depths, enabling progressive and repeated interaction across the encoder hierarchy. Fusion tokens are reintegrated into the token sequence and refined by subsequent transformer layers, facilitating hierarchical propagation of complementary information while preserving view-specific structure. Experiments on VinDr-Mammo and CMMD datasets demonstrate consistent improvements over linear probing, prompt-only adaptation, and conventional fusion baselines. On the VinDr-Mammo BI-RADS classification task, the framework achieves 50.40% F1-score and 0.8090 AUC, including a 0.10 AUC improvement over a dual-view fusion baseline in the binary setting. Ablation studies further validate the effectiveness of token-based fusion and multi-depth interaction design.",
+    "signals": [],
+    "is_verified": false,
+    "verifier_notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+    "collected_at": "2026-07-08T08:44:14.754469+00:00"
+}

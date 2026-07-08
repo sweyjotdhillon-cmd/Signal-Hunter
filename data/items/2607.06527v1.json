@@ -1,0 +1,104 @@
+{
+    "unique_id": "2607.06527v1",
+    "title": "RSF-GLLM: Bridging the Semantic Gap in Multi-Hop Knowledge Graph QA via Recurrent Soft-Flow and Decoupled LLM Generation",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.06527v1",
+    "publication_date": "2026-07-07T17:32:36Z",
+    "discovered_date": "2026-07-08T08:44:14.749569Z",
+    "authors": [
+        {
+            "name": "Sambaran Bandyopadhyay",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Ananth Muppidi",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "Multi-hop Question Answering over Knowledge Graphs faces a critical challenge: traditional retrieve-then-read pipelines break differentiability, preventing the retriever from learning to bridge the semantic gap where intermediate nodes lack lexical overlap with the query. To address this, we propose RSF-GLLM, a framework decoupling differentiable graph reasoning from answer generation. Our Recurrent Soft-Flow (RSF) module employs a GRU-guided query updater to propagate continuous relevance scores, utilizing a dynamic gating mechanism to traverse semantically dissimilar bridge nodes via structural cues. We introduce flow sparsity regularization to theoretically guarantee convergence from soft probabilities to discrete reasoning paths. These paths are extracted and textualized to fine-tune a Large Language Model (LLM), ensuring generation is grounded in factual topology. Experiments on WebQSP and CWQ demonstrate that RSF-GLLM achieves competitive performance with superior inference efficiency compared to LLM based computationally expensive approaches.",
+    "tags": [
+        "cs.cl",
+        "cs.ai"
+    ],
+    "categories": [
+        "cs.CL",
+        "cs.AI"
+    ],
+    "technologies": [
+        "LLM"
+    ],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.4,
+    "engineering_score": 0.5,
+    "scientific_score": 0.8,
+    "startup_score": 0.4,
+    "confidence_score": 0.5666666666666668,
+    "novelty_score": 0.5,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-08T08:44:14.817605",
+        "score": 1.0,
+        "notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.06527v1",
+        "primary_category": "cs.CL",
+        "doi": null,
+        "updated": "2026-07-07T17:32:36Z",
+        "version": "1"
+    },
+    "raw_content": "Multi-hop Question Answering over Knowledge Graphs faces a critical challenge: traditional retrieve-then-read pipelines break differentiability, preventing the retriever from learning to bridge the semantic gap where intermediate nodes lack lexical overlap with the query. To address this, we propose RSF-GLLM, a framework decoupling differentiable graph reasoning from answer generation. Our Recurrent Soft-Flow (RSF) module employs a GRU-guided query updater to propagate continuous relevance scores, utilizing a dynamic gating mechanism to traverse semantically dissimilar bridge nodes via structural cues. We introduce flow sparsity regularization to theoretically guarantee convergence from soft probabilities to discrete reasoning paths. These paths are extracted and textualized to fine-tune a Large Language Model (LLM), ensuring generation is grounded in factual topology. Experiments on WebQSP and CWQ demonstrate that RSF-GLLM achieves competitive performance with superior inference efficiency compared to LLM based computationally expensive approaches.",
+    "signals": [],
+    "is_verified": false,
+    "verifier_notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+    "collected_at": "2026-07-08T08:44:14.749569+00:00"
+}

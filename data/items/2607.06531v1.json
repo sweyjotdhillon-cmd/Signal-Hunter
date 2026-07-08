@@ -1,0 +1,102 @@
+{
+    "unique_id": "2607.06531v1",
+    "title": "The Large Cancer Assistant (LCA): A Model-Agnostic Orchestration Framework for Scalable Clinical Decision Support in Oncology",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.06531v1",
+    "publication_date": "2026-07-07T17:38:47Z",
+    "discovered_date": "2026-07-08T08:44:14.749439Z",
+    "authors": [
+        {
+            "name": "Ghassen Marrakchi",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Basarab Matei",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "- Objective: Multimodal deep learning models in oncology are currently limited by monolithic designs that rigidly couple data ingestion, clinical routing, and artificial intelligence (AI) inference. To address this inflexibility, we propose the Large Cancer Assistant (LCA), a model-agnostic, post-hoc orchestration framework designed for scalable clinical decision support. - Methods: The LCA is mathematically formalized as a 7-tuple architecture grounded in the principle of Algorithmic Impermeability, ensuring the orchestration logic remains strictly independent of underlying black-box AI models. We introduce the Entry Theory, leveraging Geometric Deep Learning (GDL) to standardize multimodal patient data along distinct structural and medical axes. The system dynamically orchestrates data via a Cancer Switching Module and intentionally isolates the core AI execution from volatile hospital IT infrastructures by outputting a Standardized Intermediate Payload (SIP). - Results: A Proof of Concept (PoC) validated the orchestration logic across four technical scenarios. The framework executed a nominal flow with negligible orchestration overhead. It empirically demonstrated algorithmic impermeability by maintaining an invariant routing projection during AI model swaps, and it validated strict failure-safety by achieving a 100\\% recall rate in generating targeted Supplementary Data Requests (SDR) under injected data anomalies. Multi-protocol execution capability was also successfully verified. - Conclusion: By structurally decoupling multimodal ingestion from feature inference, the LCA provides a highly adaptable and modular orchestration foundation. The SIP establishes a clear architectural boundary, natively setting the stage for downstream Electronic Medical Record (EMR) interoperability as an independent future paradigm.",
+    "tags": [
+        "cs.ai",
+        "cs.lg"
+    ],
+    "categories": [
+        "cs.AI",
+        "cs.LG"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.4,
+    "engineering_score": 0.5,
+    "scientific_score": 0.8,
+    "startup_score": 0.4,
+    "confidence_score": 0.5666666666666668,
+    "novelty_score": 0.5,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-08T08:44:14.817343",
+        "score": 1.0,
+        "notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.06531v1",
+        "primary_category": "cs.AI",
+        "doi": null,
+        "updated": "2026-07-07T17:38:47Z",
+        "version": "1"
+    },
+    "raw_content": "- Objective: Multimodal deep learning models in oncology are currently limited by monolithic designs that rigidly couple data ingestion, clinical routing, and artificial intelligence (AI) inference. To address this inflexibility, we propose the Large Cancer Assistant (LCA), a model-agnostic, post-hoc orchestration framework designed for scalable clinical decision support. - Methods: The LCA is mathematically formalized as a 7-tuple architecture grounded in the principle of Algorithmic Impermeability, ensuring the orchestration logic remains strictly independent of underlying black-box AI models. We introduce the Entry Theory, leveraging Geometric Deep Learning (GDL) to standardize multimodal patient data along distinct structural and medical axes. The system dynamically orchestrates data via a Cancer Switching Module and intentionally isolates the core AI execution from volatile hospital IT infrastructures by outputting a Standardized Intermediate Payload (SIP). - Results: A Proof of Concept (PoC) validated the orchestration logic across four technical scenarios. The framework executed a nominal flow with negligible orchestration overhead. It empirically demonstrated algorithmic impermeability by maintaining an invariant routing projection during AI model swaps, and it validated strict failure-safety by achieving a 100\\% recall rate in generating targeted Supplementary Data Requests (SDR) under injected data anomalies. Multi-protocol execution capability was also successfully verified. - Conclusion: By structurally decoupling multimodal ingestion from feature inference, the LCA provides a highly adaptable and modular orchestration foundation. The SIP establishes a clear architectural boundary, natively setting the stage for downstream Electronic Medical Record (EMR) interoperability as an independent future paradigm.",
+    "signals": [],
+    "is_verified": false,
+    "verifier_notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+    "collected_at": "2026-07-08T08:44:14.749439+00:00"
+}

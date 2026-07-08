@@ -1,0 +1,102 @@
+{
+    "unique_id": "2607.06382v1",
+    "title": "A Function-Space Dichotomy for Compositional Learning: Exponential Sub-Optimality of the Neural Tangent Kernel",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.06382v1",
+    "publication_date": "2026-07-07T15:21:20Z",
+    "discovered_date": "2026-07-08T08:44:14.753169Z",
+    "authors": [
+        {
+            "name": "Arkaprabha Ganguli",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Emil Constantinescu",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "A persistent empirical observation is that trained neural networks outperform their neural tangent kernel (NTK) limit on tasks with compositional structure, yet a quantitative account of $\\textbf{when}$ and $\\textbf{by how much}$ has been lacking. Working on the unit circle, we give such an account through a dichotomy between two complexity measures of the target: its $\\textbf{Fourier complexity}$, which controls NTK kernel regression, and its $\\textbf{architectural complexity}$, which controls learning over depth-$L$, width-$w$ ReLU networks with the variation norm of the weights bounded by $R$. We first characterize the minimax rate of the architecture class $\\mathcal{C}_{L,w,R}$, pinning it down up to a single factor of $L$: between $Ω(Lw^2R^2/n)$ and $\\tilde{O}(L^2w^2R^2/n)$. We then show the NTK estimator sits $\\textbf{exponentially}$ above this floor whenever the two complexities decouple: for the depth-$L$ iterated sawtooth, NTK regression needs $Ω(4^L)$ samples while the minimax floor is polynomial in $L$. Numerical experiments confirm the theoretical claims: on bandlimited smooth targets, the NTK is competitive or better, while on the hypercube sparse-parity model, a standard two-layer network beats the NTK by four to six orders of magnitude in test error. The gap is thus a function-space property, a mismatch between the kernel's smoothness bias and the target's compositional structure, rather than a generic kernel-versus-network phenomenon.",
+    "tags": [
+        "stat.ml",
+        "cs.lg"
+    ],
+    "categories": [
+        "stat.ML",
+        "cs.LG"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.4,
+    "engineering_score": 0.5,
+    "scientific_score": 0.8,
+    "startup_score": 0.4,
+    "confidence_score": 0.5666666666666668,
+    "novelty_score": 0.5,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-08T08:44:14.821507",
+        "score": 1.0,
+        "notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.06382v1",
+        "primary_category": "stat.ML",
+        "doi": null,
+        "updated": "2026-07-07T15:21:20Z",
+        "version": "1"
+    },
+    "raw_content": "A persistent empirical observation is that trained neural networks outperform their neural tangent kernel (NTK) limit on tasks with compositional structure, yet a quantitative account of $\\textbf{when}$ and $\\textbf{by how much}$ has been lacking. Working on the unit circle, we give such an account through a dichotomy between two complexity measures of the target: its $\\textbf{Fourier complexity}$, which controls NTK kernel regression, and its $\\textbf{architectural complexity}$, which controls learning over depth-$L$, width-$w$ ReLU networks with the variation norm of the weights bounded by $R$. We first characterize the minimax rate of the architecture class $\\mathcal{C}_{L,w,R}$, pinning it down up to a single factor of $L$: between $Ω(Lw^2R^2/n)$ and $\\tilde{O}(L^2w^2R^2/n)$. We then show the NTK estimator sits $\\textbf{exponentially}$ above this floor whenever the two complexities decouple: for the depth-$L$ iterated sawtooth, NTK regression needs $Ω(4^L)$ samples while the minimax floor is polynomial in $L$. Numerical experiments confirm the theoretical claims: on bandlimited smooth targets, the NTK is competitive or better, while on the hypercube sparse-parity model, a standard two-layer network beats the NTK by four to six orders of magnitude in test error. The gap is thus a function-space property, a mismatch between the kernel's smoothness bias and the target's compositional structure, rather than a generic kernel-versus-network phenomenon.",
+    "signals": [],
+    "is_verified": false,
+    "verifier_notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+    "collected_at": "2026-07-08T08:44:14.753169+00:00"
+}

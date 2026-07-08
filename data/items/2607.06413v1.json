@@ -1,0 +1,118 @@
+{
+    "unique_id": "2607.06413v1",
+    "title": "An Experimental Design Approach to Evaluating Agentic AI's Autonomous Model Discovery",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.06413v1",
+    "publication_date": "2026-07-07T15:43:22Z",
+    "discovered_date": "2026-07-08T08:44:14.752528Z",
+    "authors": [
+        {
+            "name": "Hao He",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Xueying Liu",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Chris J. Kuhlman",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Xinwei Deng",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "Large language model coding agents increasingly perform open-ended data modeling and analysis. These agents are stochastic and adaptive, and therefore their autonomous model discovery behavior cannot be adequately characterized by a single benchmark run. In this work, we propose an experimental design and analysis framework for systematically evaluating this discovery process, quantifying its variability, and identifying important factors. The proposed framework treats these agents as stochastic model-discovery operators, which map task-specific discovery data and an optimization target to a fitted model. Specifically, we investigate two such operators, Codex and Claude Code, under controlled experimental factors including agent's reasoning effort, task, optimization metric, and composition of training data. For each agent-task-metric combination, regression models and inference are conducted for multiple responses such as output quality, dollar cost, wall-clock time, and process complexity. Furthermore, we develop a utility-aligned canonical decomposition to characterize the dominant direction of the reasoning-effort effect and to assess whether that direction aligns with a performance-cost utility direction. The proposed framework is demonstrated on a testbed of networked word-forming games with insightful findings on reasoning effort with respect to cost and process complexity.",
+    "tags": [
+        "stat.me",
+        "cs.ai"
+    ],
+    "categories": [
+        "stat.ME",
+        "cs.AI"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.4,
+    "engineering_score": 0.5,
+    "scientific_score": 0.8,
+    "startup_score": 0.4,
+    "confidence_score": 0.5666666666666668,
+    "novelty_score": 0.5,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-08T08:44:14.820751",
+        "score": 1.0,
+        "notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.06413v1",
+        "primary_category": "stat.ME",
+        "doi": null,
+        "updated": "2026-07-07T15:43:22Z",
+        "version": "1"
+    },
+    "raw_content": "Large language model coding agents increasingly perform open-ended data modeling and analysis. These agents are stochastic and adaptive, and therefore their autonomous model discovery behavior cannot be adequately characterized by a single benchmark run. In this work, we propose an experimental design and analysis framework for systematically evaluating this discovery process, quantifying its variability, and identifying important factors. The proposed framework treats these agents as stochastic model-discovery operators, which map task-specific discovery data and an optimization target to a fitted model. Specifically, we investigate two such operators, Codex and Claude Code, under controlled experimental factors including agent's reasoning effort, task, optimization metric, and composition of training data. For each agent-task-metric combination, regression models and inference are conducted for multiple responses such as output quality, dollar cost, wall-clock time, and process complexity. Furthermore, we develop a utility-aligned canonical decomposition to characterize the dominant direction of the reasoning-effort effect and to assess whether that direction aligns with a performance-cost utility direction. The proposed framework is demonstrated on a testbed of networked word-forming games with insightful findings on reasoning effort with respect to cost and process complexity.",
+    "signals": [],
+    "is_verified": false,
+    "verifier_notes": "Failed confidence threshold (0.0 < 0.75). Engine Status: VERIFIED (Score: 100). Strict validation failed: No concrete signal elements extracted.",
+    "collected_at": "2026-07-08T08:44:14.752528+00:00"
+}
