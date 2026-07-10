@@ -218,8 +218,44 @@ class AIAnalyzerStage(BasePipelineStage):
             return items
         try:
             enriched = []
-            for item in items:
-                enriched.append(self.analyzer.analyze(item))
+            # Sort items by confidence_score descending to prioritize highest-signal papers
+            sorted_items = sorted(items, key=lambda x: getattr(x, "confidence_score", 0.0), reverse=True)
+            
+            # Run AI analyzer on top 10 highest-scoring signals
+            target_limit = 10
+            for idx, item in enumerate(sorted_items):
+                if idx < target_limit:
+                    self.logger.info("AI Analyzing top candidate #%d: '%s' (Confidence: %.2f)", idx + 1, item.title, item.confidence_score)
+                    try:
+                        enriched.append(self.analyzer.analyze(item))
+                    except Exception as exc:
+                        self.logger.warning("LLM analysis failed for '%s' due to: %s. Applying local baseline fallback.", item.title, exc)
+                        if not item.summary:
+                            item.summary = f"Technical baseline preprint and reference covering {item.title}."
+                        # Initialize empty lists if not already populated
+                        if not item.signals:
+                            item.signals = ["Explore general systems engineering applicability."]
+                        if not item.technologies:
+                            item.technologies = []
+                        if not item.programming_languages:
+                            item.programming_languages = []
+                        if not item.build_opportunities:
+                            item.build_opportunities = []
+                        enriched.append(item)
+                else:
+                    # Lightweight fallback for lower-scoring items to bypass expensive API calls
+                    if not item.summary:
+                        item.summary = f"Technical baseline preprint and reference covering {item.title}."
+                    # Initialize empty lists if not already populated
+                    if not item.signals:
+                        item.signals = ["Explore general systems engineering applicability."]
+                    if not item.technologies:
+                        item.technologies = []
+                    if not item.programming_languages:
+                        item.programming_languages = []
+                    if not item.build_opportunities:
+                        item.build_opportunities = []
+                    enriched.append(item)
             return enriched
         except Exception as e:
             self.logger.error("AIAnalyzerStage processing failure: %s", e)

@@ -51,9 +51,9 @@ class JSONMemoryStore:
         """
         filepath = os.path.join(self.items_dir, f"{item.id}.json")
         try:
-            # Pydantic items can dump to dictionaries safely
-            data = item.model_dump()
-            # Handle datetime serializations
+            # Pydantic items can dump to dictionaries safely with JSON compatibility
+            data = item.model_dump(mode="json")
+            # Ensure backwards compatibility for collected_at alias
             data["collected_at"] = item.collected_at.isoformat()
 
             safe_write_json(filepath, data)

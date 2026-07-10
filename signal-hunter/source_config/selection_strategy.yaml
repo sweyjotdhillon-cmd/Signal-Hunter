@@ -1,0 +1,21 @@
+selection_strategy:
+  source_mix:
+    trusted_percentage: 70.0
+    hidden_gems_percentage: 30.0
+
+  discovery_mix:
+    user_interest_percentage: 70.0
+    random_discovery_percentage: 30.0
+
+  recency_mix:
+    within_90_days: 70.0
+    within_1_year: 20.0
+    timeless_breakthroughs: 10.0
+
+  personalization:
+    enabled: true
+    user_interest_categories:
+      - "ai_ml"
+      - "computer_science"
+      - "cybersecurity"
+      - "biotechnology"

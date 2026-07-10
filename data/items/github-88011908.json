@@ -1,0 +1,106 @@
+{
+    "unique_id": "github-88011908",
+    "title": "project-based-learning",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/practical-tutorials/project-based-learning",
+    "publication_date": "2017-04-12T05:07:46Z",
+    "discovered_date": "2026-07-10T11:39:21.838480Z",
+    "authors": [
+        {
+            "name": "Practical-Tutorials",
+            "email": null,
+            "affiliation": null,
+            "github_username": "practical-tutorials",
+            "website": "https://github.com/practical-tutorials",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "practical-tutorials",
+    "summary": "Curated list of project-based tutorials",
+    "tags": [
+        "beginner-project",
+        "cpp",
+        "golang",
+        "javascript",
+        "project",
+        "python",
+        "tutorial",
+        "webdevelopment"
+    ],
+    "categories": [
+        "Python"
+    ],
+    "technologies": [],
+    "programming_languages": [
+        "C++",
+        "Go",
+        "JavaScript",
+        "Python"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/practical-tutorials/project-based-learning",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.977510",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmaster",
+    "raw_metadata": {
+        "stars": 272712,
+        "forks": 35197,
+        "watchers": 272712,
+        "open_issues": 283,
+        "license": "MIT License"
+    },
+    "raw_content": "Curated list of project-based tutorials",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:21.838480+00:00"
+}

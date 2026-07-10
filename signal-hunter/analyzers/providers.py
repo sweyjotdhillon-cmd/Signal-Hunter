@@ -203,7 +203,7 @@ class NvidiaProvider(BaseLLMProvider):
                     self.api_url,
                     json=payload,
                     headers=headers,
-                    timeout=30.0,
+                    timeout=90.0,
                 )
                 
                 status_code = response.status_code
@@ -353,3 +353,254 @@ class NvidiaProvider(BaseLLMProvider):
 
         self.logger.info("Successfully validated JSON response.")
         return parsed_json
+
+
+class GeminiProvider(BaseLLMProvider):
+    """
+    Google Gemini LLM Provider implementation using standard REST API.
+    Does not require any specialized google client library, maintaining ultra-high stability.
+    """
+
+    def __init__(
+        self,
+        config: AnalyzerConfig,
+        max_retries: int = 2,
+        initial_delay: float = 1.0,
+        backoff_factor: float = 2.0,
+    ) -> None:
+        """
+        Initialize the Gemini Provider.
+        """
+        self.config = config
+        self.max_retries = max_retries
+        self.initial_delay = initial_delay
+        self.backoff_factor = backoff_factor
+
+        self.logger: logging.Logger = setup_logger(
+            name="signal_hunter.providers.gemini",
+            log_level="INFO",
+        )
+
+        # Retrieve API key strictly from environment
+        self.api_key: Optional[str] = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or os.getenv("GOOGLE_GENAI_API_KEY")
+
+        self.model_name = getattr(config, "model_name", "gemini-3.5-flash")
+        if not self.model_name or "meta/" in self.model_name or "gemini-2.5" in self.model_name:
+            self.model_name = "gemini-3.5-flash"
+
+        self.logger.info(
+            "GeminiProvider initialized (Model: %s, Max Retries: %d)",
+            self.model_name,
+            self.max_retries,
+        )
+
+    def generate(
+        self,
+        prompt: str,
+        system_instruction: Optional[str] = None,
+        temperature: float = 0.1,
+        max_tokens: int = 1500,
+    ) -> str:
+        """
+        Sends a generation request to the Gemini API with retry and backoff handling.
+        """
+        if not self.api_key:
+            raise LLMAPIKeyError(
+                "GeminiProvider",
+                "GEMINI_API_KEY is missing. Please configure it in your environment."
+            )
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model_name}:generateContent?key={self.api_key}"
+        headers = {"Content-Type": "application/json"}
+
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": temperature if temperature is not None else self.config.temperature,
+                "maxOutputTokens": max_tokens if max_tokens is not None else self.config.max_tokens,
+            }
+        }
+        if system_instruction:
+            payload["systemInstruction"] = {"parts": [{"text": system_instruction}]}
+
+        masked_key = f"{self.api_key[:6]}...{self.api_key[-4:]}" if len(self.api_key) > 10 else "***"
+        self.logger.info(
+            "Sending Gemini request to model %s (Prompt length: %d chars, Key: %s)",
+            self.model_name,
+            len(prompt),
+            masked_key,
+        )
+
+        delay = self.initial_delay
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                response = requests.post(
+                    url,
+                    json=payload,
+                    headers=headers,
+                    timeout=15.0,
+                )
+                status_code = response.status_code
+
+                if status_code == 200:
+                    try:
+                        res_json = response.json()
+                        text_output = res_json["candidates"][0]["content"]["parts"][0]["text"]
+                        self.logger.info(
+                            "Gemini request succeeded on attempt %d (Response length: %d chars)",
+                            attempt,
+                            len(text_output),
+                        )
+                        return text_output
+                    except (KeyError, IndexError, ValueError) as e:
+                        self.logger.error(
+                            "Gemini API response format is invalid on attempt %d: %s",
+                            attempt,
+                            e,
+                        )
+                        raise LLMValidationError(
+                            "GeminiProvider",
+                            f"Failed to parse text completion from Gemini response: {e}"
+                        ) from e
+
+                # Handle errors
+                self.logger.warning("Gemini API call returned error status %d on attempt %d", status_code, attempt)
+
+                if status_code in (401, 403):
+                    raise LLMAPIKeyError("GeminiProvider", f"Authentication failed with status {status_code}.")
+                if status_code == 429:
+                    if attempt == self.max_retries:
+                        raise LLMRateLimitError("GeminiProvider", f"Rate limit exceeded after {self.max_retries} attempts.")
+                elif status_code >= 500:
+                    if attempt == self.max_retries:
+                        raise LLMProviderError("GeminiProvider", f"Gemini Server error ({status_code}) after {self.max_retries} attempts.")
+                else:
+                    raise LLMProviderError("GeminiProvider", f"Client error with status {status_code}: {response.text}")
+
+            except requests.exceptions.RequestException as e:
+                self.logger.warning("Network error occurred on attempt %d: %s", attempt, e)
+                if attempt == self.max_retries:
+                    raise LLMNetworkError("GeminiProvider", f"Network failure: {e}") from e
+
+            # Backoff
+            jitter = random.uniform(0.0, 0.5)
+            sleep_time = delay + jitter
+            time.sleep(sleep_time)
+            delay *= self.backoff_factor
+
+        raise LLMProviderError("GeminiProvider", "Max retries reached without success.")
+
+    def generate_structured(
+        self,
+        prompt: str,
+        system_instruction: Optional[str] = None,
+        temperature: float = 0.1,
+        max_tokens: int = 1500,
+        expected_keys: Optional[List[str]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Requests structured output from Gemini using its native JSON response feature,
+        then validates the required fields are present.
+        """
+        if not self.api_key:
+            raise LLMAPIKeyError(
+                "GeminiProvider",
+                "GEMINI_API_KEY is missing. Please configure it in your environment."
+            )
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model_name}:generateContent?key={self.api_key}"
+        headers = {"Content-Type": "application/json"}
+
+        # Instruct model on JSON expectations
+        json_guidance = "\n\nYou must respond with a single, valid JSON object ONLY. Do not include any extra conversational text."
+        if expected_keys:
+            json_guidance += f" The JSON object must contain these exact keys: {expected_keys}."
+
+        full_prompt = prompt + json_guidance
+
+        payload = {
+            "contents": [{"parts": [{"text": full_prompt}]}],
+            "generationConfig": {
+                "temperature": temperature if temperature is not None else self.config.temperature,
+                "maxOutputTokens": max_tokens if max_tokens is not None else self.config.max_tokens,
+                "responseMimeType": "application/json",  # Force native JSON parsing
+            }
+        }
+        if system_instruction:
+            payload["systemInstruction"] = {"parts": [{"text": system_instruction}]}
+
+        masked_key = f"{self.api_key[:6]}...{self.api_key[-4:]}" if len(self.api_key) > 10 else "***"
+        self.logger.info(
+            "Sending structured Gemini request to model %s (Prompt length: %d chars, Key: %s)",
+            self.model_name,
+            len(full_prompt),
+            masked_key,
+        )
+
+        delay = self.initial_delay
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                response = requests.post(
+                    url,
+                    json=payload,
+                    headers=headers,
+                    timeout=15.0,
+                )
+                status_code = response.status_code
+
+                if status_code == 200:
+                    try:
+                        res_json = response.json()
+                        text_output = res_json["candidates"][0]["content"]["parts"][0]["text"].strip()
+                        
+                        # Clean markdown wrappers if any are present despite responseMimeType
+                        match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text_output)
+                        if match:
+                            text_output = match.group(1).strip()
+
+                        parsed_json = json.loads(text_output)
+
+                        # Validate expected keys
+                        if expected_keys:
+                            missing_keys = [key for key in expected_keys if key not in parsed_json]
+                            if missing_keys:
+                                raise LLMValidationError(
+                                    "GeminiProvider",
+                                    f"JSON response is missing required keys: {missing_keys}"
+                                )
+
+                        self.logger.info("Successfully parsed and validated Gemini structured JSON response.")
+                        return parsed_json
+
+                    except (KeyError, IndexError, ValueError, json.JSONDecodeError) as e:
+                        self.logger.error("Failed to parse/validate Gemini response on attempt %d: %s", attempt, e)
+                        raise LLMValidationError(
+                            "GeminiProvider",
+                            f"JSON structure parsing failed: {e}"
+                        ) from e
+
+                # Handle errors
+                if status_code in (401, 403):
+                    raise LLMAPIKeyError("GeminiProvider", f"Authentication failed with status {status_code}.")
+                if status_code == 429:
+                    if attempt == self.max_retries:
+                        raise LLMRateLimitError("GeminiProvider", f"Rate limit exceeded after {self.max_retries} attempts.")
+                elif status_code >= 500:
+                    if attempt == self.max_retries:
+                        raise LLMProviderError("GeminiProvider", f"Gemini Server error ({status_code}) after {self.max_retries} attempts.")
+                else:
+                    raise LLMProviderError("GeminiProvider", f"Client error with status {status_code}: {response.text}")
+
+            except requests.exceptions.RequestException as e:
+                self.logger.warning("Network error occurred on attempt %d: %s", attempt, e)
+                if attempt == self.max_retries:
+                    raise LLMNetworkError("GeminiProvider", f"Network failure: {e}") from e
+
+            # Backoff
+            jitter = random.uniform(0.0, 0.5)
+            sleep_time = delay + jitter
+            time.sleep(sleep_time)
+            delay *= self.backoff_factor
+
+        raise LLMProviderError("GeminiProvider", "Max retries reached without success.")
+

@@ -1,0 +1,115 @@
+{
+    "unique_id": "github-193215554",
+    "title": "n8n",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/n8n-io/n8n",
+    "publication_date": "2019-06-22T09:24:21Z",
+    "discovered_date": "2026-07-10T11:39:23.353962Z",
+    "authors": [
+        {
+            "name": "N8N-Io",
+            "email": null,
+            "affiliation": null,
+            "github_username": "n8n-io",
+            "website": "https://github.com/n8n-io",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "n8n-io",
+    "summary": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+    "tags": [
+        "ai",
+        "apis",
+        "automation",
+        "cli",
+        "data-flow",
+        "development",
+        "integration-framework",
+        "integrations",
+        "ipaas",
+        "low-code",
+        "low-code-platform",
+        "mcp",
+        "mcp-client",
+        "mcp-server",
+        "n8n",
+        "no-code",
+        "self-hosted",
+        "typescript",
+        "workflow",
+        "workflow-automation"
+    ],
+    "categories": [
+        "TypeScript"
+    ],
+    "technologies": [],
+    "programming_languages": [
+        "TypeScript"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/n8n-io/n8n",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.978046",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmaster",
+    "raw_metadata": {
+        "stars": 195923,
+        "forks": 59220,
+        "watchers": 195923,
+        "open_issues": 1463,
+        "license": "Other"
+    },
+    "raw_content": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:23.353962+00:00"
+}

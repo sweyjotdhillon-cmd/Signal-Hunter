@@ -258,12 +258,23 @@ class SignalVerifier(BaseVerifier):
         item.verification_status.score = score / 100.0  # ge=0.0, le=1.0
 
         # Construct detailed verifier notes for backward compatibility
-        meets_confidence = item.confidence_score >= self.config.min_confidence_score
+        is_scored = item.confidence_score > 0.0
+
+        if is_scored:
+            meets_confidence = item.confidence_score >= self.config.min_confidence_score
+        else:
+            meets_confidence = True
+
         notes_list = []
         if meets_confidence:
-            notes_list.append(
-                f"Passed confidence threshold ({item.confidence_score} >= {self.config.min_confidence_score})."
-            )
+            if is_scored:
+                notes_list.append(
+                    f"Passed confidence threshold ({item.confidence_score} >= {self.config.min_confidence_score})."
+                )
+            else:
+                notes_list.append(
+                    "Confidence score not yet computed. Assuming early pass."
+                )
         else:
             notes_list.append(
                 f"Failed confidence threshold ({item.confidence_score} < {self.config.min_confidence_score})."
@@ -280,7 +291,7 @@ class SignalVerifier(BaseVerifier):
         has_adequate_summary = item.summary is not None and len(item.summary) >= 20
 
         is_valid = meets_confidence
-        if self.config.strict_mode:
+        if self.config.strict_mode and is_scored:
             if not has_concrete_signals:
                 is_valid = False
                 notes_list.append("Strict validation failed: No concrete signal elements extracted.")

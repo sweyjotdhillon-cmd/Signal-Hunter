@@ -114,8 +114,9 @@ class MarkdownReporter(BaseDelivery):
                 report_lines.append(f"#### {idx}. {item.title}")
                 report_lines.append(f"- **Confidence Rating**: `{item.confidence_score:.2f}` {indicator}")
                 report_lines.append(f"- **Canonical URL**: <{item.url}>")
-                if item.author:
-                    report_lines.append(f"- **Author/Creator**: {item.author}")
+                if item.authors:
+                    authors_str = ", ".join(a.name for a in item.authors)
+                    report_lines.append(f"- **Author/Creator**: {authors_str}")
                 report_lines.append("")
                 report_lines.append("**Core Technical Summary:**")
                 report_lines.append(f"> {item.summary or 'No summary provided.'}")
@@ -144,8 +145,12 @@ class MarkdownReporter(BaseDelivery):
         try:
             with open(report_path, "w", encoding="utf-8") as f:
                 f.write(markdown_content)
-            self.logger.info("Successfully published daily markdown report to: %s", report_path)
+            # Also save as latest.md so the web app can always fetch the latest report
+            latest_path = os.path.join(out_dir, "latest.md")
+            with open(latest_path, "w", encoding="utf-8") as f:
+                f.write(markdown_content)
+            self.logger.info("Successfully published daily markdown report to: %s and %s", report_path, latest_path)
         except Exception as e:
-            self.logger.error("Failed to write daily markdown report file: %s", e)
+            self.logger.error("Failed to write daily markdown report files: %s", e)
 
         return markdown_content

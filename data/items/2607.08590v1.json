@@ -1,0 +1,118 @@
+{
+    "unique_id": "2607.08590v1",
+    "title": "Robust Bayesian Decision Making under Adversarial Uncertainty",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.08590v1",
+    "publication_date": "2026-07-09T15:25:57Z",
+    "discovered_date": "2026-07-10T11:39:21.312187Z",
+    "authors": [
+        {
+            "name": "Haripriya Harikumar",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Sammie Katt",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Yasir Zubayr Barlas",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Samuel Kaski",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "Scientific experiments are often designed to maximize information gain, yet in many applications the primary objective is to support reliable downstream decision-making. Existing decision-aware experimental design and active learning methods typically assume well-specified outcome models and implicitly rely on the stability of the optimal decision under real-world perturbations. In practice, however, experimental outcomes are frequently influenced by hidden or weakly modeled effects, which can substantially alter decision optimality and lead to misleading conclusions. We study sequential adversarially robust decision-aware experimental design, where data acquisition has to take into account information gain against plausible worst-case unexpected effects, modeled here as variation in adversarial variables. Building on Bayesian decision theory, we formalize an adversarially robust optimal decision under this setting and derive a principled Bayesian experimental design criterion. The criterion explicitly targets decision stability rather than nominal optimality. Experiments on synthetic and real-world scientific datasets show that conventional decision-aware design can converge rapidly to high confidence yet fragile decisions, while our robustness-aware approach yields decisions that are significantly more stable and reliable under adversarial variation.",
+    "tags": [
+        "cs.lg"
+    ],
+    "categories": [
+        "cs.LG"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.45,
+    "engineering_score": 0.4,
+    "scientific_score": 0.75,
+    "startup_score": 0.4,
+    "confidence_score": 0.53,
+    "novelty_score": 0.7,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.975752",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.08590v1",
+        "primary_category": "cs.LG",
+        "doi": null,
+        "updated": "2026-07-09T15:25:57Z",
+        "version": "1"
+    },
+    "raw_content": "Scientific experiments are often designed to maximize information gain, yet in many applications the primary objective is to support reliable downstream decision-making. Existing decision-aware experimental design and active learning methods typically assume well-specified outcome models and implicitly rely on the stability of the optimal decision under real-world perturbations. In practice, however, experimental outcomes are frequently influenced by hidden or weakly modeled effects, which can substantially alter decision optimality and lead to misleading conclusions. We study sequential adversarially robust decision-aware experimental design, where data acquisition has to take into account information gain against plausible worst-case unexpected effects, modeled here as variation in adversarial variables. Building on Bayesian decision theory, we formalize an adversarially robust optimal decision under this setting and derive a principled Bayesian experimental design criterion. The criterion explicitly targets decision stability rather than nominal optimality. Experiments on synthetic and real-world scientific datasets show that conventional decision-aware design can converge rapidly to high confidence yet fragile decisions, while our robustness-aware approach yields decisions that are significantly more stable and reliable under adversarial variation.",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:21.312187+00:00"
+}

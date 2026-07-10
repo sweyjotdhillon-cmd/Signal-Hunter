@@ -1,0 +1,22 @@
+source_type_weights:
+  Research Papers: 1.00
+  Preprints: 0.85
+  Journals: 0.95
+  Conference Papers: 0.90
+  GitHub: 0.80
+  Engineering Blogs: 0.75
+  Technical Documentation: 0.70
+  Research Organizations: 0.90
+  Government Labs: 0.95
+  Universities: 0.90
+  Standards: 0.95
+  Startup Engineering Blogs: 0.70
+  Open Source Communities: 0.75
+  Patent Databases: 0.85
+
+parameter_weights:
+  quality: 0.35
+  reliability: 0.30
+  freshness: 0.15
+  popularity: 0.10
+  bias_score_penalty: 0.10

@@ -1,0 +1,101 @@
+{
+    "unique_id": "github-20580498",
+    "title": "kubernetes",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/kubernetes/kubernetes",
+    "publication_date": "2014-06-06T22:56:04Z",
+    "discovered_date": "2026-07-10T11:39:24.929106Z",
+    "authors": [
+        {
+            "name": "Kubernetes",
+            "email": null,
+            "affiliation": null,
+            "github_username": "kubernetes",
+            "website": "https://github.com/kubernetes",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "kubernetes",
+    "summary": "Production-Grade Container Scheduling and Management",
+    "tags": [
+        "cncf",
+        "containers",
+        "go",
+        "kubernetes"
+    ],
+    "categories": [
+        "Go"
+    ],
+    "technologies": [
+        "Kubernetes"
+    ],
+    "programming_languages": [
+        "Go"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/kubernetes/kubernetes",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.978527",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmaster",
+    "raw_metadata": {
+        "stars": 123690,
+        "forks": 43661,
+        "watchers": 123690,
+        "open_issues": 2708,
+        "license": "Apache License 2.0"
+    },
+    "raw_content": "Production-Grade Container Scheduling and Management",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:24.929106+00:00"
+}

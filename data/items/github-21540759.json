@@ -1,0 +1,101 @@
+{
+    "unique_id": "github-21540759",
+    "title": "awesome-go",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/avelino/awesome-go",
+    "publication_date": "2014-07-06T13:42:15Z",
+    "discovered_date": "2026-07-10T11:39:24.928995Z",
+    "authors": [
+        {
+            "name": "Avelino",
+            "email": null,
+            "affiliation": null,
+            "github_username": "avelino",
+            "website": "https://github.com/avelino",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "A curated list of awesome Go frameworks, libraries and software",
+    "tags": [
+        "awesome",
+        "awesome-list",
+        "go",
+        "golang",
+        "golang-library",
+        "hacktoberfest"
+    ],
+    "categories": [
+        "Go"
+    ],
+    "technologies": [],
+    "programming_languages": [
+        "Go"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/avelino/awesome-go",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.978146",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmain",
+    "raw_metadata": {
+        "stars": 177724,
+        "forks": 13407,
+        "watchers": 177724,
+        "open_issues": 189,
+        "license": "MIT License"
+    },
+    "raw_content": "A curated list of awesome Go frameworks, libraries and software",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:24.928995+00:00"
+}

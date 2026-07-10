@@ -1,0 +1,222 @@
+sources:
+  arxiv_cs_ai:
+    id: "arxiv_cs_ai"
+    name: "arXiv Computer Science - Artificial Intelligence"
+    category: "ai_ml"
+    source_type: "Preprints"
+    quality_score: 0.85
+    reliability: 0.90
+    popularity: 0.95
+    bias_score: 0.05
+    freshness: 0.95
+    update_frequency: "daily"
+    rate_limits:
+      requests_per_minute: 20
+      max_per_day: 1000
+    verification_strategy: "peer_evaluation"
+    api_available: true
+    collector_available: true
+
+  arxiv_cs_lg:
+    id: "arxiv_cs_lg"
+    name: "arXiv Computer Science - Machine Learning"
+    category: "ai_ml"
+    source_type: "Preprints"
+    quality_score: 0.85
+    reliability: 0.90
+    popularity: 0.95
+    bias_score: 0.05
+    freshness: 0.95
+    update_frequency: "daily"
+    rate_limits:
+      requests_per_minute: 20
+    verification_strategy: "peer_evaluation"
+    api_available: true
+    collector_available: true
+
+  openai_blog:
+    id: "openai_blog"
+    name: "OpenAI Research & Engineering Blog"
+    category: "ai_ml"
+    source_type: "Engineering Blogs"
+    quality_score: 0.80
+    reliability: 0.75
+    popularity: 0.98
+    bias_score: 0.35
+    freshness: 0.70
+    update_frequency: "monthly"
+    rate_limits:
+      requests_per_minute: 60
+    verification_strategy: "experimental_replication"
+    api_available: false
+    collector_available: false
+
+  google_deepmind_blog:
+    id: "google_deepmind_blog"
+    name: "Google DeepMind Research Blog"
+    category: "ai_ml"
+    source_type: "Engineering Blogs"
+    quality_score: 0.85
+    reliability: 0.85
+    popularity: 0.95
+    bias_score: 0.30
+    freshness: 0.75
+    update_frequency: "monthly"
+    rate_limits:
+      requests_per_minute: 60
+    verification_strategy: "experimental_replication"
+    api_available: false
+    collector_available: false
+
+  huggingface_papers:
+    id: "huggingface_papers"
+    name: "Hugging Face Daily Papers"
+    category: "ai_ml"
+    source_type: "Open Source Communities"
+    quality_score: 0.75
+    reliability: 0.70
+    popularity: 0.90
+    bias_score: 0.15
+    freshness: 0.98
+    update_frequency: "daily"
+    rate_limits:
+      requests_per_minute: 30
+    verification_strategy: "community_consensus"
+    api_available: true
+    collector_available: false
+
+  github_trending_ai:
+    id: "github_trending_ai"
+    name: "GitHub Trending AI Projects"
+    category: "ai_ml"
+    source_type: "GitHub"
+    quality_score: 0.70
+    reliability: 0.65
+    popularity: 0.95
+    bias_score: 0.20
+    freshness: 0.95
+    update_frequency: "daily"
+    rate_limits:
+      requests_per_minute: 10
+    verification_strategy: "code_review"
+    api_available: true
+    collector_available: false
+
+  acm_digital_library:
+    id: "acm_digital_library"
+    name: "ACM Digital Library"
+    category: "computer_science"
+    source_type: "Journals"
+    quality_score: 0.95
+    reliability: 0.98
+    popularity: 0.80
+    bias_score: 0.02
+    freshness: 0.40
+    update_frequency: "quarterly"
+    rate_limits:
+      requests_per_minute: 5
+    verification_strategy: "peer_review"
+    api_available: true
+    collector_available: false
+
+  ieee_spectrum:
+    id: "ieee_spectrum"
+    name: "IEEE Spectrum"
+    category: "electrical_electronics"
+    source_type: "Journals"
+    quality_score: 0.90
+    reliability: 0.95
+    popularity: 0.85
+    bias_score: 0.05
+    freshness: 0.60
+    update_frequency: "weekly"
+    rate_limits:
+      requests_per_minute: 30
+    verification_strategy: "peer_review"
+    api_available: true
+    collector_available: false
+
+  nasa_technical_reports:
+    id: "nasa_technical_reports"
+    name: "NASA Technical Reports Server"
+    category: "space_aerospace"
+    source_type: "Government Labs"
+    quality_score: 0.92
+    reliability: 0.95
+    popularity: 0.50
+    bias_score: 0.05
+    freshness: 0.50
+    update_frequency: "monthly"
+    rate_limits:
+      requests_per_minute: 15
+    verification_strategy: "institutional_audit"
+    api_available: true
+    collector_available: false
+
+  github_exploits:
+    id: "github_exploits"
+    name: "GitHub Emerging Vulnerabilities & Exploits"
+    category: "cybersecurity"
+    source_type: "GitHub"
+    quality_score: 0.78
+    reliability: 0.70
+    popularity: 0.60
+    bias_score: 0.10
+    freshness: 0.99
+    update_frequency: "daily"
+    rate_limits:
+      requests_per_minute: 10
+    verification_strategy: "signature_matching"
+    api_available: true
+    collector_available: false
+
+  iks_journal_india:
+    id: "iks_journal_india"
+    name: "IKS Research Portal"
+    category: "indian_knowledge_systems"
+    source_type: "Research Organizations"
+    quality_score: 0.80
+    reliability: 0.80
+    popularity: 0.30
+    bias_score: 0.05
+    freshness: 0.30
+    update_frequency: "quarterly"
+    rate_limits:
+      requests_per_minute: 30
+    verification_strategy: "expert_review"
+    api_available: false
+    collector_available: false
+
+  philpapers_trending:
+    id: "philpapers_trending"
+    name: "PhilPapers Trending PhilSci"
+    category: "philosophy_scientific"
+    source_type: "Preprints"
+    quality_score: 0.82
+    reliability: 0.85
+    popularity: 0.40
+    bias_score: 0.02
+    freshness: 0.50
+    update_frequency: "weekly"
+    rate_limits:
+      requests_per_minute: 20
+    verification_strategy: "expert_review"
+    api_available: true
+    collector_available: false
+
+  hackernews_breakouts:
+    id: "hackernews_breakouts"
+    name: "Hacker News Technical Breakouts"
+    category: "wildcards"
+    source_type: "Open Source Communities"
+    quality_score: 0.70
+    reliability: 0.60
+    popularity: 0.95
+    bias_score: 0.15
+    freshness: 0.98
+    update_frequency: "daily"
+    rate_limits:
+      requests_per_minute: 60
+    verification_strategy: "crowdsourced_validation"
+    api_available: true
+    collector_available: false

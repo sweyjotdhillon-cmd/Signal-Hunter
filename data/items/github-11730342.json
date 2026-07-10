@@ -1,0 +1,104 @@
+{
+    "unique_id": "github-11730342",
+    "title": "vue",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/vuejs/vue",
+    "publication_date": "2013-07-29T03:24:51Z",
+    "discovered_date": "2026-07-10T11:39:23.353928Z",
+    "authors": [
+        {
+            "name": "Vuejs",
+            "email": null,
+            "affiliation": null,
+            "github_username": "vuejs",
+            "website": "https://github.com/vuejs",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "vuejs",
+    "summary": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+    "tags": [
+        "framework",
+        "frontend",
+        "javascript",
+        "vue",
+        "typescript"
+    ],
+    "categories": [
+        "TypeScript"
+    ],
+    "technologies": [
+        "Vue"
+    ],
+    "programming_languages": [
+        "Go",
+        "JavaScript",
+        "TypeScript"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/vuejs/vue",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.977946",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmain",
+    "raw_metadata": {
+        "stars": 210145,
+        "forks": 33899,
+        "watchers": 210145,
+        "open_issues": 635,
+        "license": "MIT License"
+    },
+    "raw_content": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:23.353928+00:00"
+}

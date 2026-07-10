@@ -1,0 +1,99 @@
+{
+    "unique_id": "github-23096959",
+    "title": "go",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/golang/go",
+    "publication_date": "2014-08-19T04:33:40Z",
+    "discovered_date": "2026-07-10T11:39:24.929086Z",
+    "authors": [
+        {
+            "name": "Golang",
+            "email": null,
+            "affiliation": null,
+            "github_username": "golang",
+            "website": "https://github.com/golang",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "golang",
+    "summary": "The Go programming language",
+    "tags": [
+        "go",
+        "golang",
+        "language",
+        "programming-language"
+    ],
+    "categories": [
+        "Go"
+    ],
+    "technologies": [],
+    "programming_languages": [
+        "Go"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/golang/go",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.978379",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmaster",
+    "raw_metadata": {
+        "stars": 135326,
+        "forks": 19274,
+        "watchers": 135326,
+        "open_issues": 10184,
+        "license": "BSD 3-Clause \"New\" or \"Revised\" License"
+    },
+    "raw_content": "The Go programming language",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:24.929086+00:00"
+}

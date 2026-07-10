@@ -9,7 +9,7 @@ import sys
 
 # Compute the absolute path to the backend directory
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-BACKEND_DIR = os.path.join(CURRENT_DIR, "backend")
+BACKEND_DIR = os.path.join(CURRENT_DIR, "signal-hunter")
 
 # Insert backend directory at front of sys.path
 sys.path.insert(0, BACKEND_DIR)

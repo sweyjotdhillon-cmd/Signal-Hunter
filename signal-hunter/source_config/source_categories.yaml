@@ -1,0 +1,286 @@
+categories:
+  ai_ml:
+    id: "ai_ml"
+    name: "Artificial Intelligence & Machine Learning"
+    priority: 1
+    weight: 1.00
+    trusted_sources: ["arxiv_cs_ai", "arxiv_cs_lg", "openai_blog", "google_deepmind_blog"]
+    emerging_sources: ["huggingface_papers", "github_trending_ai"]
+    recency_rules:
+      max_age_days: 90
+    quality_threshold: 0.75
+    max_daily_items: 20
+    random_discovery_percentage: 15.0
+
+  computer_science:
+    id: "computer_science"
+    name: "Computer Science"
+    priority: 2
+    weight: 0.90
+    trusted_sources: ["acm_digital_library", "arxiv_cs_ds"]
+    emerging_sources: ["github_trending_cs"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.70
+    max_daily_items: 15
+    random_discovery_percentage: 10.0
+
+  software_engineering:
+    id: "software_engineering"
+    name: "Software Engineering"
+    priority: 3
+    weight: 0.85
+    trusted_sources: ["ieee_software", "acm_tosem"]
+    emerging_sources: ["github_trending_se", "dev_to_featured"]
+    recency_rules:
+      max_age_days: 120
+    quality_threshold: 0.65
+    max_daily_items: 15
+    random_discovery_percentage: 20.0
+
+  mathematics:
+    id: "mathematics"
+    name: "Mathematics"
+    priority: 4
+    weight: 0.80
+    trusted_sources: ["ams_bulletin", "arxiv_math"]
+    emerging_sources: ["math_overflow_trending"]
+    recency_rules:
+      max_age_days: 365
+    quality_threshold: 0.70
+    max_daily_items: 8
+    random_discovery_percentage: 5.0
+
+  physics:
+    id: "physics"
+    name: "Physics"
+    priority: 5
+    weight: 0.80
+    trusted_sources: ["physical_review_letters", "arxiv_physics"]
+    emerging_sources: ["physics_world_insights"]
+    recency_rules:
+      max_age_days: 365
+    quality_threshold: 0.70
+    max_daily_items: 8
+    random_discovery_percentage: 5.0
+
+  electrical_electronics:
+    id: "electrical_electronics"
+    name: "Electrical & Electronics Engineering"
+    priority: 6
+    weight: 0.85
+    trusted_sources: ["ieee_spectrum", "ieee_transactions_ed"]
+    emerging_sources: ["hackaday_tech"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.68
+    max_daily_items: 10
+    random_discovery_percentage: 10.0
+
+  robotics_automation:
+    id: "robotics_automation"
+    name: "Robotics & Automation"
+    priority: 7
+    weight: 0.90
+    trusted_sources: ["ieee_tro", "ijrr_journal"]
+    emerging_sources: ["github_robotics"]
+    recency_rules:
+      max_age_days: 120
+    quality_threshold: 0.70
+    max_daily_items: 10
+    random_discovery_percentage: 15.0
+
+  materials_science:
+    id: "materials_science"
+    name: "Materials Science"
+    priority: 8
+    weight: 0.75
+    trusted_sources: ["nature_materials", "advanced_materials"]
+    emerging_sources: ["materials_today_news"]
+    recency_rules:
+      max_age_days: 365
+    quality_threshold: 0.72
+    max_daily_items: 5
+    random_discovery_percentage: 5.0
+
+  biology:
+    id: "biology"
+    name: "Biology"
+    priority: 9
+    weight: 0.75
+    trusted_sources: ["cell_journal", "biorxiv_biology"]
+    emerging_sources: ["plos_biology_discoveries"]
+    recency_rules:
+      max_age_days: 270
+    quality_threshold: 0.70
+    max_daily_items: 8
+    random_discovery_percentage: 5.0
+
+  biotechnology:
+    id: "biotechnology"
+    name: "Biotechnology"
+    priority: 10
+    weight: 0.85
+    trusted_sources: ["nature_biotech", "biorxiv_biotech"]
+    emerging_sources: ["synbiobeta_insights"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.72
+    max_daily_items: 8
+    random_discovery_percentage: 10.0
+
+  medicine_healthcare:
+    id: "medicine_healthcare"
+    name: "Medicine & Healthcare"
+    priority: 11
+    weight: 0.80
+    trusted_sources: ["nejm_journal", "lancet_journal", "medrxiv_med"]
+    emerging_sources: ["digital_health_wire"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.75
+    max_daily_items: 10
+    random_discovery_percentage: 5.0
+
+  psychology_cognitive:
+    id: "psychology_cognitive"
+    name: "Psychology & Cognitive Science"
+    priority: 12
+    weight: 0.70
+    trusted_sources: ["trends_cognitive_sciences", "cognitive_science_journal"]
+    emerging_sources: ["psyarxiv_preprints"]
+    recency_rules:
+      max_age_days: 270
+    quality_threshold: 0.65
+    max_daily_items: 6
+    random_discovery_percentage: 10.0
+
+  cybersecurity:
+    id: "cybersecurity"
+    name: "Cybersecurity"
+    priority: 13
+    weight: 0.90
+    trusted_sources: ["ieee_security_privacy", "usenix_security"]
+    emerging_sources: ["portswigger_daily", "github_exploits"]
+    recency_rules:
+      max_age_days: 45
+    quality_threshold: 0.75
+    max_daily_items: 15
+    random_discovery_percentage: 15.0
+
+  climate_energy:
+    id: "climate_energy"
+    name: "Climate & Energy"
+    priority: 14
+    weight: 0.80
+    trusted_sources: ["nature_climate_change", "ieee_transactions_smart_grid"]
+    emerging_sources: ["canary_media_tech"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.70
+    max_daily_items: 8
+    random_discovery_percentage: 10.0
+
+  manufacturing:
+    id: "manufacturing"
+    name: "Manufacturing"
+    priority: 15
+    weight: 0.70
+    trusted_sources: ["journal_manufacturing_systems", "sme_manufacturing"]
+    emerging_sources: ["industrial_iot_insights"]
+    recency_rules:
+      max_age_days: 270
+    quality_threshold: 0.65
+    max_daily_items: 5
+    random_discovery_percentage: 10.0
+
+  agriculture:
+    id: "agriculture"
+    name: "Agriculture"
+    priority: 16
+    weight: 0.65
+    trusted_sources: ["computers_electronics_agriculture", "ag_systems_journal"]
+    emerging_sources: ["agfunder_news"]
+    recency_rules:
+      max_age_days: 270
+    quality_threshold: 0.60
+    max_daily_items: 5
+    random_discovery_percentage: 10.0
+
+  economics_finance:
+    id: "economics_finance"
+    name: "Economics & Finance"
+    priority: 17
+    weight: 0.75
+    trusted_sources: ["quarterly_journal_economics", "nber_papers"]
+    emerging_sources: ["defi_research_reports"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.70
+    max_daily_items: 8
+    random_discovery_percentage: 10.0
+
+  space_aerospace:
+    id: "space_aerospace"
+    name: "Space & Aerospace"
+    priority: 18
+    weight: 0.85
+    trusted_sources: ["aiaa_journal", "nasa_technical_reports"]
+    emerging_sources: ["space_flight_now_tech"]
+    recency_rules:
+      max_age_days: 180
+    quality_threshold: 0.72
+    max_daily_items: 8
+    random_discovery_percentage: 10.0
+
+  archaeology_ancient:
+    id: "archaeology_ancient"
+    name: "Archaeology & Ancient Civilizations"
+    priority: 19
+    weight: 0.50
+    trusted_sources: ["journal_archaeological_science", "antiquity_journal"]
+    emerging_sources: ["ancient_origins_tech"]
+    recency_rules:
+      max_age_days: 365
+    quality_threshold: 0.60
+    max_daily_items: 3
+    random_discovery_percentage: 15.0
+
+  philosophy_scientific:
+    id: "philosophy_scientific"
+    name: "Religion, Philosophy & Scientific Inquiry"
+    priority: 20
+    weight: 0.60
+    trusted_sources: ["philosophy_science_journal", "synthese_journal"]
+    emerging_sources: ["philpapers_trending"]
+    recency_rules:
+      max_age_days: 365
+    quality_threshold: 0.65
+    max_daily_items: 4
+    random_discovery_percentage: 15.0
+
+  indian_knowledge_systems:
+    id: "indian_knowledge_systems"
+    name: "Indian Knowledge Systems"
+    priority: 21
+    weight: 0.65
+    trusted_sources: ["iks_iit_delhi_reports", "iks_journal_india"]
+    emerging_sources: ["bharat_temple_science"]
+    recency_rules:
+      max_age_days: 365
+    quality_threshold: 0.65
+    max_daily_items: 5
+    random_discovery_percentage: 20.0
+
+  wildcards:
+    id: "wildcards"
+    name: "Wildcards"
+    priority: 22
+    weight: 0.50
+    trusted_sources: []
+    emerging_sources: ["hackernews_breakouts", "reddit_futurism"]
+    recency_rules:
+      max_age_days: 30
+    quality_threshold: 0.60
+    max_daily_items: 5
+    random_discovery_percentage: 100.0

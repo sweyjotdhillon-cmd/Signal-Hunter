@@ -34,13 +34,12 @@ app.get("/api/status", (req, res) => {
     }
   }
 
-  const tgConfigured = !!(process.env.BOT_TOKEN && process.env.CHAT_ID) || !!(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID);
-  const nvidiaConfigured = !!process.env.NVIDIA_API_KEY;
+  let nvidiaApiKey = process.env.NVIDIA_API_KEY || "";
+  const nvidiaConfigured = !!nvidiaApiKey;
 
   res.json({
     kbSize,
     reportsCount,
-    tgConfigured,
     nvidiaConfigured,
     environment: "Cloud Run Container",
     lastRunTime: fs.existsSync(path.join(process.cwd(), "data", "pipeline_run.log"))
@@ -79,7 +78,21 @@ app.get("/api/items", (req, res) => {
 
 // 3. Fetch Latest Report
 app.get("/api/report", (req, res) => {
-  const latestPath = path.join(process.cwd(), "reports", "latest.md");
+  const reportsDir = path.join(process.cwd(), "reports");
+  let latestPath = path.join(reportsDir, "latest.md");
+
+  if (!fs.existsSync(latestPath) && fs.existsSync(reportsDir)) {
+    try {
+      const files = fs.readdirSync(reportsDir).filter(f => f.endsWith(".md") && f !== "latest.md");
+      if (files.length > 0) {
+        files.sort();
+        latestPath = path.join(reportsDir, files[files.length - 1]);
+      }
+    } catch (e) {
+      console.error("Error reading reports directory for latest:", e);
+    }
+  }
+
   if (fs.existsSync(latestPath)) {
     try {
       const markdown = fs.readFileSync(latestPath, "utf-8");
@@ -94,6 +107,7 @@ app.get("/api/report", (req, res) => {
 
 // 4. Trigger Pipeline Run
 app.post("/api/run", (req, res) => {
+  const { nvidiaApiKey } = req.body;
   const logDir = path.join(process.cwd(), "data");
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true });
@@ -102,7 +116,13 @@ app.post("/api/run", (req, res) => {
   const logFilePath = path.join(logDir, "pipeline_run.log");
   const logStream = fs.createWriteStream(logFilePath, { flags: "w" });
 
-  const pyProcess = spawn("python3", ["main.py", "--run"]);
+  // Merge process.env with body credentials
+  const envCopy = { ...process.env };
+  if (nvidiaApiKey) {
+    envCopy.NVIDIA_API_KEY = nvidiaApiKey;
+  }
+
+  const pyProcess = spawn("python3", ["main.py", "--run"], { env: envCopy });
 
   pyProcess.stdout.on("data", (data) => {
     logStream.write(data);
@@ -122,6 +142,55 @@ app.post("/api/run", (req, res) => {
 
   // Return immediately indicating the run has started
   res.json({ status: "started", logFile: "pipeline_run.log" });
+});
+
+// 4b. GET Saved Integration Credentials
+app.get("/api/credentials", (req, res) => {
+  res.json({ nvidiaApiKey: "" });
+});
+
+// 4c. POST Update Integration Credentials
+app.post("/api/credentials", (req, res) => {
+  res.json({ success: true });
+});
+
+// 4d. POST Reset All Data
+app.post("/api/reset", (req, res) => {
+  try {
+    const kbDir = path.join(process.cwd(), "data", "items");
+    const reportsDir = path.join(process.cwd(), "reports");
+    const logFilePath = path.join(process.cwd(), "data", "pipeline_run.log");
+
+    // Clear items
+    if (fs.existsSync(kbDir)) {
+      const files = fs.readdirSync(kbDir);
+      for (const file of files) {
+        if (file.endsWith(".json")) {
+          fs.unlinkSync(path.join(kbDir, file));
+        }
+      }
+    }
+
+    // Clear reports
+    if (fs.existsSync(reportsDir)) {
+      const files = fs.readdirSync(reportsDir);
+      for (const file of files) {
+        if (file.endsWith(".md")) {
+          fs.unlinkSync(path.join(reportsDir, file));
+        }
+      }
+    }
+
+    // Truncate logs
+    if (fs.existsSync(logFilePath)) {
+      fs.writeFileSync(logFilePath, "Logs cleared. Trigger a pipeline run to start.", "utf-8");
+    }
+
+    res.json({ success: true, message: "Research data reset successfully." });
+  } catch (e: any) {
+    console.error("Error resetting research data:", e);
+    res.status(500).json({ success: false, error: e.message || "Failed to reset data." });
+  }
 });
 
 // 5. Fetch Live Run Logs

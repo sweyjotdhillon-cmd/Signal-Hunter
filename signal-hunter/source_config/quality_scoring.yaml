@@ -1,0 +1,14 @@
+intelligence_principles:
+  famous_organization_bias_penalty: 0.15 # Correction to ensure quality of evidence outweighs reputation
+  rewards:
+    novelty: 0.25
+    engineering_usefulness: 0.25
+    scientific_impact: 0.15
+    commercial_opportunity: 0.10
+    practicality: 0.10
+    long_term_influence: 0.10
+    independent_confirmation: 0.15
+  quality_checks:
+    peer_reviewed: 0.30
+    experimental_evidence: 0.40
+    code_provided: 0.30

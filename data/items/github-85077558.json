@@ -1,0 +1,121 @@
+{
+    "unique_id": "github-85077558",
+    "title": "developer-roadmap",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/nilbuild/developer-roadmap",
+    "publication_date": "2017-03-15T13:45:52Z",
+    "discovered_date": "2026-07-10T11:39:23.353907Z",
+    "authors": [
+        {
+            "name": "Nilbuild",
+            "email": null,
+            "affiliation": null,
+            "github_username": "nilbuild",
+            "website": "https://github.com/nilbuild",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
+    "tags": [
+        "angular-roadmap",
+        "backend-roadmap",
+        "blockchain-roadmap",
+        "computer-science",
+        "dba-roadmap",
+        "developer-roadmap",
+        "devops-roadmap",
+        "frontend-roadmap",
+        "go-roadmap",
+        "java-roadmap",
+        "javascript-roadmap",
+        "nodejs-roadmap",
+        "python-roadmap",
+        "qa-roadmap",
+        "react-roadmap",
+        "roadmap",
+        "software-architect-roadmap",
+        "vue-roadmap",
+        "typescript"
+    ],
+    "categories": [
+        "TypeScript"
+    ],
+    "technologies": [
+        "React",
+        "Vue"
+    ],
+    "programming_languages": [
+        "Go",
+        "Java",
+        "JavaScript",
+        "Python",
+        "TypeScript"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/nilbuild/developer-roadmap",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.75,
+    "engineering_score": 1.0,
+    "scientific_score": 0.3,
+    "startup_score": 0.6,
+    "confidence_score": 0.64,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.977839",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmaster",
+    "raw_metadata": {
+        "stars": 360135,
+        "forks": 44441,
+        "watchers": 360135,
+        "open_issues": 23,
+        "license": "Other"
+    },
+    "raw_content": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:23.353907+00:00"
+}

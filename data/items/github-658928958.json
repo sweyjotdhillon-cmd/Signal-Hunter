@@ -1,0 +1,113 @@
+{
+    "unique_id": "github-658928958",
+    "title": "ollama",
+    "source_name": "GitHub",
+    "source_type": "code_repository",
+    "url": "https://github.com/ollama/ollama",
+    "publication_date": "2023-06-26T19:39:32Z",
+    "discovered_date": "2026-07-10T11:39:24.929063Z",
+    "authors": [
+        {
+            "name": "Ollama",
+            "email": null,
+            "affiliation": null,
+            "github_username": "ollama",
+            "website": "https://github.com/ollama",
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "ollama",
+    "summary": "Get up and running with Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+    "tags": [
+        "deepseek",
+        "gemma",
+        "gemma3",
+        "glm",
+        "go",
+        "golang",
+        "gpt-oss",
+        "llama",
+        "llama3",
+        "llm",
+        "llms",
+        "minimax",
+        "mistral",
+        "ollama",
+        "qwen"
+    ],
+    "categories": [
+        "Go"
+    ],
+    "technologies": [
+        "GPT",
+        "LLM"
+    ],
+    "programming_languages": [
+        "Go"
+    ],
+    "paper_type": null,
+    "github_repository": "https://github.com/ollama/ollama",
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.8,
+    "engineering_score": 1.0,
+    "scientific_score": 0.35,
+    "startup_score": 0.6,
+    "confidence_score": 0.67,
+    "novelty_score": 0.45,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.978244",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "vmain",
+    "raw_metadata": {
+        "stars": 175851,
+        "forks": 16914,
+        "watchers": 175851,
+        "open_issues": 3404,
+        "license": "MIT License"
+    },
+    "raw_content": "Get up and running with Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:24.929063+00:00"
+}

@@ -1,0 +1,104 @@
+{
+    "unique_id": "2607.08581v1",
+    "title": "Spectral Stability of Pseudoinverse-Based Extreme Learning Machine",
+    "source_name": "arXiv",
+    "source_type": "preprint",
+    "url": "https://arxiv.org/abs/2607.08581v1",
+    "publication_date": "2026-07-09T15:15:25Z",
+    "discovered_date": "2026-07-10T11:39:21.312282Z",
+    "authors": [
+        {
+            "name": "Bich Van Nguyen",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        },
+        {
+            "name": "Ngoc Anh Khong",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": null,
+    "summary": "Extreme Learning Machine (ELM) computes output weights analytically using the Moore-Penrose pseudoinverse. Although this leads to fast training, its numerical stability depends strongly on the conditioning of the hidden layer matrix. This paper studies pseudoinverse-based ELM from a spectral perspective. We show that the smallest singular value governs perturbation amplification in the output weights, while the condition number provides a quantitative measure of hidden-layer instability. We compare SVD-based pseudoinverse computation with iterative hyperpower methods and discuss width-dependent conditioning through a random feature interpretation. Experiments on synthetic matrices and ELM benchmarks show that SVD-based methods remain the most reliable under ill conditioning, while iterative methods are more sensitive to spectral properties. The results suggest that ELM stability is fundamentally governed by the singular value structure of the hidden layer matrix.",
+    "tags": [
+        "cs.lg",
+        "math.sp"
+    ],
+    "categories": [
+        "cs.LG",
+        "math.SP"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.4,
+    "engineering_score": 0.4,
+    "scientific_score": 0.7,
+    "startup_score": 0.4,
+    "confidence_score": 0.5,
+    "novelty_score": 0.65,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.975878",
+        "score": 1.0,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Non-empty technical summary",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [],
+                "warnings": [],
+                "verification_score": 100.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0+v1",
+    "raw_metadata": {
+        "arxiv_id": "2607.08581v1",
+        "primary_category": "cs.LG",
+        "doi": null,
+        "updated": "2026-07-09T15:15:25Z",
+        "version": "1"
+    },
+    "raw_content": "Extreme Learning Machine (ELM) computes output weights analytically using the Moore-Penrose pseudoinverse. Although this leads to fast training, its numerical stability depends strongly on the conditioning of the hidden layer matrix. This paper studies pseudoinverse-based ELM from a spectral perspective. We show that the smallest singular value governs perturbation amplification in the output weights, while the condition number provides a quantitative measure of hidden-layer instability. We compare SVD-based pseudoinverse computation with iterative hyperpower methods and discuss width-dependent conditioning through a random feature interpretation. Experiments on synthetic matrices and ELM benchmarks show that SVD-based methods remain the most reliable under ill conditioning, while iterative methods are more sensitive to spectral properties. The results suggest that ELM stability is fundamentally governed by the singular value structure of the hidden layer matrix.",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 100).",
+    "collected_at": "2026-07-10T11:39:21.312282+00:00"
+}

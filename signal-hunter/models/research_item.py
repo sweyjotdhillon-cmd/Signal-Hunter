@@ -413,6 +413,16 @@ class ResearchItem(BaseModel):
         self.unique_id = value
 
     @property
+    def collected_at(self) -> datetime:
+        """Alias for discovered_date to support legacy property-based accesses."""
+        return self.discovered_date
+
+    @collected_at.setter
+    def collected_at(self, value: datetime) -> None:
+        """Setter for legacy collected_at updates."""
+        self.discovered_date = value
+
+    @property
     def score_card(self) -> ScoreCard:
         """Returns a composite ScoreCard compiled from the top-level scores."""
         return ScoreCard(

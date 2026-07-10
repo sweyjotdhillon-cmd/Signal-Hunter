@@ -1,0 +1,95 @@
+{
+    "unique_id": "techblog-httpsdeepmindgoogleblogintroducingcomputeruseingemini35flash",
+    "title": "Introducing computer use in Gemini 3.5 Flash",
+    "source_name": "deepmind.google",
+    "source_type": "engineering_blog",
+    "url": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash",
+    "publication_date": "2026-06-24T16:30:01Z",
+    "discovered_date": "2026-07-10T11:39:25.892034Z",
+    "authors": [
+        {
+            "name": "Engineering Team",
+            "email": null,
+            "affiliation": null,
+            "github_username": null,
+            "website": null,
+            "extra_metadata": {}
+        }
+    ],
+    "organization": "deepmind.google",
+    "summary": "Technical baseline preprint and reference covering Introducing computer use in Gemini 3.5 Flash.",
+    "tags": [
+        "deepmind.google",
+        "engineering-blog"
+    ],
+    "categories": [
+        "Engineering Blog"
+    ],
+    "technologies": [],
+    "programming_languages": [],
+    "paper_type": null,
+    "github_repository": null,
+    "documentation_links": [],
+    "related_links": [],
+    "seller_pitch": null,
+    "why_it_matters": null,
+    "build_opportunities": [],
+    "risks": [],
+    "opportunity_score": 0.6,
+    "engineering_score": 0.5,
+    "scientific_score": 0.4,
+    "startup_score": 0.65,
+    "confidence_score": 0.51,
+    "novelty_score": 0.4,
+    "verification_status": {
+        "state": "verified",
+        "verified_by": "VerificationEngine",
+        "verified_at": "2026-07-10T11:39:25.979034",
+        "score": 0.85,
+        "notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 85). Failed: Technical summary is empty. Warnings: Technical summary is empty.",
+        "is_breakthrough": false,
+        "extra_metadata": {
+            "report": {
+                "passed_checks": [
+                    "Required fields exist",
+                    "URL format is valid",
+                    "Publication date is valid",
+                    "Unique ID in current batch",
+                    "Title is valid and non-empty",
+                    "Raw metadata integrity check passed",
+                    "No score malformations detected"
+                ],
+                "failed_checks": [
+                    "Technical summary is empty"
+                ],
+                "warnings": [
+                    "Technical summary is empty"
+                ],
+                "verification_score": 85.0,
+                "status": "VERIFIED"
+            }
+        }
+    },
+    "trend_metadata": {
+        "velocity": 0.0,
+        "sentiment_score": 0.0,
+        "interest_level": "low",
+        "growth_percentage": null,
+        "mentions_count": 0,
+        "sources_count": 0,
+        "extra_metadata": {}
+    },
+    "duplicate_of": null,
+    "version": "1.0.0",
+    "raw_metadata": {
+        "original_feed": "https://deepmind.google/discover",
+        "author": "Engineering Team"
+    },
+    "raw_content": "",
+    "signals": [
+        "Explore general systems engineering applicability."
+    ],
+    "is_verified": true,
+    "verifier_notes": "Confidence score not yet computed. Assuming early pass. Engine Status: VERIFIED (Score: 85). Failed: Technical summary is empty. Warnings: Technical summary is empty.",
+    "collected_at": "2026-07-10T11:39:25.892034+00:00"
+}
